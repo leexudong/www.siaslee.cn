@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=ie=7 http-equiv=x-ua-compatible>
+<style>
+    .pagination{list-style: none;}
+    .pagination li{display: inline-block;padding: 2px 8px}
+</style>
+<script type="text/javascript" src="__STATIC__/admin/js/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="__STATIC__/admin/css/pintuer.css">
+<LINK rel=stylesheet type=text/css href="__STATIC__/admin/css/admincp.css">
+<META name=GENERATOR content="MSHTML 8.00.6001.19120"></HEAD>
+<BODY>
+  <div id="append_parent"></div>
+  <div class="container" id="cpcontainer">
+    <script type="text/JavaScript">parent.document.title = '标题';</script>
+    <div class="itemtitle"><h6>话题记录</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="__SITE__/admin/topic/set" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$count} </strong>条话题
+        </th>
+      </tr>
+      <tr class="header">
+        <th></th>
+        <th>标题</th>
+        <th>点击数</th>
+        <th>评论数</th>
+       <!--  <th>作者</th> -->
+        <th>发布时间</th>
+      </tr>
+      {foreach $list as $v}
+        <tr class="hover">
+         <td class="td25"><input type="checkbox" name="tidarray[]" value="{$v->id}" class="checkbox"></td> 
+          <td><input type="text" name="topicTitle[{$v->id}]" value="{$v->title}" style="width:200px"></td>
+          <td><input type="text" name="hits[{$v->id}]" value="{$v->hits}" style="width:50px"></td>
+          <td><input type="text" name="commentNum[{$v->id}]" value="{$v->comment_num}" style="width:50px"></td>
+         <!--  <td>{/$v->user->username}</td> -->
+          <td>{$v->create_time}</td>
+          <td><a href="javascript:;" tid="{$v->id}" onclick="delTrue(this)" >删除</a></td>
+          <td><a href="javascript:;" tid="{$v->id}" onclick="del(this)">放入回收站</a></td>
+        </tr>
+      {/foreach}
+      <tr>
+        <td colspan="15">
+          <div class="fixsel">
+            <input type="submit" class="btn" id="submit_submit" name="submit" title="按 Enter 键可删除" value="提交" />
+          </div>
+        </td>
+      </tr>
+      </table>
+    </form>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$page}
+    <script type="text/javascript">
+        function delTrue(aobj)
+        {
+            var id = aobj.getAttribute('tid');
+            var oo='';
+            $.ajax({
+             type: "POST",
+             url: "__SITE__/admin/topic/delTrue",
+             data: {tid:id},
+             success: function(data,type){
+              eval('('+data+')');
+                obj = eval('('+data+')');
+               if(obj.status){
+                  window.location.href = '__SITE__/admin/index/topic';
+               }else{
+                alert(obj.msg);
+               }
+             }
+          });
+        }
+
+        function del(aobj)
+        {
+          var id = aobj.getAttribute('tid');
+            var oo='';
+            $.ajax({
+             type: "POST",
+             url: "__SITE__/admin/topic/del",
+             data: {tid:id},
+             success: function(data,type){
+              eval('('+data+')');
+                obj = eval('('+data+')');
+               if(obj.status){
+                  window.location.href = '__SITE__/admin/index/topic';
+               }else{
+                alert(obj.msg);
+               }
+             }
+          });
+        }
+
+          //移出回收站
+       function move(tt)
+      {
+        var tid = tt.getAttribute('tid');
+          var oo = '';
+          //console.log(tt.parent());
+         $.ajax({
+              method: 'post',
+              url: "__SITE__/admin/topic/move",
+             
+              data: {
+                id:tid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                
+                 if(oo.status){   
+                  window.location.href = '__SITE__/admin/index/topic';
+                 }else{
+                  alert(oo.msg);
+                 }
+                  
+              }
+           });  
+     }
+    </script>
+    <br>
+    <hr>
+    <br>
+    <!-- 删除的用户 -->
+    <div class="itemtitle"><h6>放入回收站的话题</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        本回收站中共有<strong> {$deleteCount} </strong>条话题
+        </th>
+      </tr>
+
+      <tr class="header">
+        <th>标题</th>
+        <th>作者</th>
+        <th>点击数</th>
+        <th>评论数</th>
+        <th>发布时间</th>
+        <th></th>
+      </tr>
+      {foreach $deleteTopic as $v}
+      <tr class="hover">
+        <td>{$v->title}</td>  
+        <td>{$v->user->username}</td>
+        <td>{$v->hits}</td>
+        <td>{$v->comment_num}</td>
+        <td>{$v->create_time}</td>
+        <td><a href="javascript:;" tid="{$v->id}" onclick="move(this)">移出回收站</a></td>
+      </tr>
+      {/foreach}
+      </table>
+    </form>
+    {$twopage}
+  </div>
+  <div style="height:100px;width:100%"></div>
+</BODY>
+</HTML>

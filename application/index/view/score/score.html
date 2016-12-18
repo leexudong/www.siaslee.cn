@@ -1,0 +1,241 @@
+<div class="main_nav_sub_w">
+    <div class="main_nav_sub_ww">
+
+        <ul class="main_nav_sub">
+            <li><a href="__SITE__/index/goods/goods" class="link pngFix"><strong>产品首页</strong></a></li>
+           
+            <li class="current"><a href="__SITE__/index/score/score" class="link pngFix"><strong>我的积分</strong></a></li>
+
+            <li><a href="__SITE__/index/goods/order" class="link pngFix"><strong>我的订单</strong></a></li>
+        </ul>
+        <!--    <form class="jjg_index_search" action="--><!--">-->
+        <!--        <input type="text" class="text" placeholder="商品名" name="jiajuguan_q" value="--><!--"><input type="submit"  class="submit" value=" ">-->
+        <!--    </form>-->
+    </div>
+</div>
+
+<div class="main_search main_search_slideUp pngFix" slideup="1" style="_display:none;" id="main_search">
+    <div class="main_search_w">
+        <div class="searchform_div"> 
+            <form action="javascript:;" target="_blank">
+                <input type="text" class="text" name="q" x-webkit-speech="" placeholder="输入菜谱、食材、作者" id="inputString"><input type="submit" class="submit" value="搜 索">
+            </form>
+        </div>
+        <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
+        <!--        <a href="http://www.meishij.net" class="bottomlogo_60"><img src="http://static.meishij.net/images/bottomlogo_60.png"></a>-->
+        <!--        --><!--<span id="searchslideup_btn" class="pngFix"--><!---->自动收缩--&gt; 
+    </div>
+</div>
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1206px;">
+    <a href="#" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+<div class="main">
+    <div class="jf_my">
+      <a href="__SITE__/index/space/space/user_id/{$uid}" class="jf_myavatar">
+        <img src="{$photo}">
+    </a>
+        <div class="jf_myinfo">
+           <div class="jf_username">{$username}</div>
+
+        <div class="jf_desss">普通会员LV1 ：新人</div>
+
+        <div class="jf_jfhz1 jf_jfhz1_user1_2">
+            <span class="s1"></span><span class="b"><em style="width:2px;"></em></span><span class="s2"></span>
+        </div>
+
+
+        <div class="jf_jfhz">
+            <span id="jifen_num">{$result->score}</span><em>积分</em><a href="__SITE__/index/score/score">如何获取积分？</a>
+        </div>
+
+    </div>
+<!-- 
+    <div class="jf_my_btnw">
+      <p>
+          成为达人即可享受不一样的特权专属标识、优先推荐、更高的积分体系、更多的家居馆折扣…想要施展才华、展现魅力的你
+          快来申请成为美食达人吧
+      </p>
+      <a target="_blank" href="http://i.meishi.cc/expert/">申请达人</a>
+
+
+    </div>
+ -->
+    <div class="dr_high_task_box" id="dr_high_task_box">
+        <h3>达人高级月任务</h3>
+        <div class="div1">
+
+            <p>
+                <strong>创作精灵<span>积分奖励 1500</span></strong>每月发布 15 篇菜谱以上（其中至少 10 篇3星以上菜谱）， 5 条食话
+            </p>
+            <p>
+                <strong>勤奋天使<span>积分奖励 3000</span></strong>每月发布 25 篇菜谱以上（其中至少 18 篇3星以上菜谱）， 5 条食话
+            </p>
+            <p>
+                <strong>掌门厨神<span>积分奖励 7000</span></strong>每月发布 50 篇菜谱以上（其中至少 35 篇3星以上菜谱）， 5 条食话
+            </p>
+        </div>
+        <div class="div2">
+            <p>注：<br>
+
+                1.	达人基础任务奖励和高级任务奖励可同时获得；<br>
+                2.	三种高级任务奖励不可同时获得，以最高奖励为准；<br>
+                3.	若完成菜谱数量，但未达到星级要求或者未完成食话，则没有高级月任务积分奖励；<br>
+                4.	已经参加活动的菜谱不包含在高级月任务内；<br>
+                5.	达人高级月任务从2015年12月1日起生效，连续完成12个月，可获得美食杰年终大奖。
+            </p>
+        </div>
+
+        <a href="javascript:void(0);" class="dr_high_task_box_shut" id="dr_high_task_box_shut">我知道了</a>
+    </div>
+
+
+</div>
+
+
+
+
+
+<style>
+    .jf_my{overflow:hidden;position:relative;}
+    #dr_high_task_btn{display:block;position:relative;height:40px;left:auto;top:auto;bottom:auto;width:150px;border-radius:4px;margin:10px auto;background:#3ad39a;color:#fff;text-align:center;line-height:40px;font-weight:bold;}
+    #dr_high_task_btn:hover{background:#2acc7c;}
+    .dr_high_task_btn img{display:block;position:absolute;right:-40px;top:-20px;}
+    .dr_high_task_box{font-family:Microsoft Yahei,微软雅黑;border-left:1px solid #eee;width:800px;background:#fff;position:absolute;right:-900px;bottom:0px;height:280px;box-shadow:0px 0px 10px rgba(0,0,0,0.3);}
+    .dr_high_task_box .div1{float:left;height:160px;margin-top:10px;}
+    .dr_high_task_box h3{font-size:18px;color:#000;font-weight:bold;line-height:44px;height:44px;margin:10px auto 0px;text-align:center;}
+    .dr_high_task_box .div1 p{font-size:12px;color:#666;line-height:20px;padding:0px 30px 10px 30px;}
+    .dr_high_task_box .div1 p strong{font-weight:bold;color:#333;font-weight:bold;display:block;}
+    .dr_high_task_box .div1 p span{color:#ff3232;font-weight:bold;padding:0px 4px;}
+    .dr_high_task_box .div2{float:left;height:160px;margin-top:10px;width:360px;}
+    .dr_high_task_box .div2 p{font-size:12px;color:#999;line-height:20px;padding:0px 30px 10px 0px;}
+    .dr_high_task_box_shut{display:block;clear:both;height:32px;width:90px;text-align:center;font-size:12px;color:#ff3232;border:1px solid #ff3232;border-radius:4px;margin:0px auto 0px;line-height:32px;position:relative;}
+    .dr_high_task_box_shut:hover{background:#ff3232;color:#fff;}
+</style>
+<script>
+    $(function(){
+        $("#dr_high_task_btn").click(function(){
+            $("#dr_high_task_box").animate({"right":"0px"},400,function(){});
+        });
+        $("#dr_high_task_box_shut").click(function(){
+            $("#dr_high_task_box").animate({"right":"-1000px"},400,function(){});
+        });
+    });
+</script>	
+<div class="jifen_nav1">
+  <ul>
+    <!--  <li><a href="http://i.meishi.cc/jifen/">我可以兑换的商品</a></li> -->
+     <li class="current"><a href="__SITE__/index/score/score">积分帮助</a></li>
+     <li><a href="__SITE__/index/goods/order">兑换记录</a></li>
+     <li><a href="__SITE__/index/goods/shoppingAddress">收货地址</a></li>
+ </ul>
+</div>
+
+	<div class="jf_con clearfix">
+		<div class="jf_subtabs1"><a href="__SITE__/index/score/score" class="current">积分规则</a></div>
+		<div class="jf_icanbuy_list_w">
+			<div class="jf_levelrule_w">
+				<div class="jf_levelrule jf_jifenrule">
+					<table cellpadding="1" cellspacing="1">
+						<tbody>
+                            <tr>
+                                <th colspan="2">行为</th>
+                                <th>注册会员</th><th>可获得积分次数</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="4" valign="middle">注册</td>
+                                <td>注册</td>
+                                <td>20</td>
+                                <td>1（永久）</td>
+                            </tr>
+                            <tr>
+                                <td>上传头像</td>
+                                <td>20</td>
+
+                                <td>1（永久）</td>
+                            </tr>
+                            <tr>
+                                <td>完善资料</td>
+                                <td>10</td>
+
+                                <td>1（永久）</td>
+                            </tr>
+                            <tr>
+                                <td>绑定手机</td>
+                                <td>200</td>
+
+                                <td>1（永久）</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" valign="middle">菜谱频道</td>
+                                <td>发布菜谱</td>
+                                <td>200</td>
+
+                                <td>不限次数</td>
+                            </tr>
+                            <tr>
+                                <td>菜谱首次被推至三餐</td>
+                                <td>300</td>
+
+                                <td>不限次数</td>
+                            </tr>
+                            <tr>
+                                <td>发布成果照</td>
+                                <td>5</td>
+
+                                <td>每天5次</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" valign="middle">论坛</td>
+                                <td>发布帖子</td>
+                                <td>3</td>
+
+                                <td>每天5次</td>
+                            </tr>
+                            <tr>
+                                <td>帖子被设为精华帖</td>
+                                <td>20</td>
+
+                                <td>不限次数</td>
+                            </tr>
+                            <tr>
+                                <td>发表/回复评论</td>
+                                <td>3</td>
+                                <td>每天5次</td>
+                            </tr>
+                            <!-- <tr>
+                                <td rowspan="3" valign="middle">日常</td>
+                                <td><a href="http://i.meishi.cc/account/invite.php" target="_blank" style="color:red">邀请好友</a>成功注册并发布一篇菜谱</td>
+                                <td>100</td>
+
+                                <td>不限次数</td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td valign="middle">签到</td>
+                                <td>1天 2 <br>连续2天 4 <br>连续3天 6 <br>连续4天 8 <br>连续5天及以上 10</td>
+
+                                <td>每天1次</td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td>每关注一位好友</td>
+                                <td>2</td>
+
+                                <td>每天5次</td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td valign="middle">生日福利</td>
+                                <td>生日福利</td>
+                                <td>200</td>
+
+                                <td>每年1次</td>
+                            </tr> -->
+                            </tbody>
+                        </table>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

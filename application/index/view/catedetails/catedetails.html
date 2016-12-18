@@ -1,0 +1,320 @@
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1206px; display: none; bottom: 20px;">
+	<a href="#" title="返回{$cateInfo[0]->cate_title}的顶部" class="backtotop pngFix">回到顶部</a>
+</div>
+
+
+<!-- start -->
+<div class="main_w clearfix">
+	<div class="main clearfix">
+		<!-- <ul class="pathstlye1">
+			<li><a id="tongji_shouye" href="__SITE__/index/index">首页</a></li>
+			<li> &gt; </li>
+			<li><a id="tongji_caipudaquan" href="http://www.meishij.net/chufang/diy/">菜谱大全</a></li>
+			<li> &gt; </li>
+			<li><a id="tongji_toolbar_10057" class="curzt" href="http://www.meishij.net/chufang/diy/yinpin/">#时尚饮品#</a></li>	</ul> -->
+
+			<!-- 菜品开始 -->
+			<div class="cp_header clearfix">
+				<div class="cp_headerimg_w">
+					<img alt="{$cateInfo[0]->cate_title}的做法" src="{$cateInfo[0]->final_pic}" style="width:328px; height:440px; ">
+				</div>	
+				<div class="cp_main_info_w">
+
+
+					<div class="info1">	
+						<h1 class="title">
+							{$cateInfo[0]->cate_title}
+						</h1>
+						<!-- <div class="erweima_t" id="erweima_t"></div> -->
+						<!-- <div class="ewmbox" id="ewmbox">
+							<div class="c">
+								<strong>用手机查看这篇菜谱</strong>
+								<p>手机扫描右侧二维码，<br>将这篇菜谱带进厨房，让您边做边看！<br><br>您也可以 <a target="_blank" href="http://sj.meishi.cc/">下载美食杰手机客户端 &gt;</a><br>随时随地看菜谱!</p>
+							</div>
+							<img src="__STATIC__/index/qrcode_wap.php" class="ewmimg">
+						</div> -->
+						<script>
+
+							var title_length = $(".cp_main_info_w .title a").html().length;
+							if(title_length <= 8){
+
+							}else if(title_length >8 && title_length <= 11){
+								$(".cp_main_info_w .info1 .title").css({"font-size":"24px"});
+							}else if(title_length >11 ){
+								$(".cp_main_info_w .info1 .title").css({"font-size":"18px"});
+							}
+
+							if(title_length >16){
+								$(".cp_main_info_w .info1 .title").css({"line-height":"22px"});
+							}
+						</script>
+						<style>
+							.cp_main_info_w .info1 .title{max-width:288px;height:44px;padding:28px 0px;line-height:44px;transition:all ease 0.3s;-webkit-transition:all ease 0.3s;}
+						</style>
+
+						<span class="favbtns">
+							<a href="" title="{$cateInfo[0]->cate_title}的做法" class="addToFav_con" id="collect">收藏
+								<!-- <span id="f_num">(204896)</span> -->
+							</a>
+							
+						</span>
+					</div>
+					<script type="text/javascript">
+						
+
+						$("#collect").click(function() {
+							$.ajax({
+								type: 'post',
+								url: "__SITE__/index/space/doCollect",
+								dataType: 'json',
+								async: false,
+								data: {
+									user_id: {$uid},
+									cate_id: {$cateInfo[0]->id},
+									
+
+								},
+								success: function(data) {
+
+									
+									if(data.status){
+										
+										$("#collect").html('<font color="#fff">'+data.msg+'</font>');
+									}else{
+										alert('你已经收藏了该菜谱');
+										$("#collect").html('<font color="#fff">'+data.msg+'</font>');
+									}
+									//window. location.href="http://www.goodeat.com";
+								}
+							});
+							return false;
+						});
+
+					</script>
+
+
+					<div class="info2">
+						<ul class="clearfix">							
+							<li class="w270">
+								<strong>难度</strong>
+								<div class="processing_w">
+									<span class="icon icon_nd"></span>
+									<span class="processing processing_nd1"></span>
+									<a id="tongji_nd" href="javascript:;" title="{$cateInfo[0]->cate_title}的难度" class="small">{$cateInfo[0]->difficulty}</a>
+								</div>
+							</li>
+							<li class="w270 br0">
+								<strong>人数</strong>
+								<div class="processing_w">
+									<span class="icon icon_rs"></span>
+									<span class="processing processing_nd6"></span>
+									<a id="tongji_rsh" href="javascript:;" title="{$cateInfo[0]->cate_title}的人数" class="small">{$cateInfo[0]->person_num}</a>
+								</div>
+							</li>
+							<!-- <li class="w127 bb0">
+								<strong>口味</strong>
+								<a id="tongji_kw" href="javascript:;" title="{$cateInfo[0]->cate_title}的口味" class="big">家常味</a>
+							</li> -->
+							<li class="w270 bb0">
+								<strong>准备时间</strong>
+								<div class="processing_w">
+									<span class="icon icon_zb"></span>
+									<span class="processing processing_nd9"></span>
+									<a id="tongji_zbsj" href="javascript:;" title="{$cateInfo[0]->cate_title}的准备时间" class="small">{$cateInfo[0]->ready_time}</a>
+								</div>
+							</li>
+							<li class="w270 bb0 br0">
+								<strong>烹饪时间</strong>
+								<div class="processing_w">
+									<span class="icon icon_pr"></span>
+									<span class="processing processing_nd3"></span>
+									<a href="javascript:;" id="tongji_prsj" title="{$cateInfo[0]->cate_title}的烹饪时间" class="small">&lt;{$cateInfo[0]->cook_time}</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+
+					<div class="info3">
+						<div class="user">
+							<a target="_blank" id="tongji_author_img" href="__SITE__/index/space/space/user_id/{$userInfo->id}" class="img">
+								<img src="{$userInfo->photo}">
+								<span class="masker pngFix"></span>
+							</a>
+							<div class="info">
+								<h4>
+									<a id="tongji_author" target="_blank" href="__SITE__/index/space/space/user_id/{$userInfo->id}">{$userInfo->username}</a>
+									<!-- <a target="_blank" class="v_small" href="http://i.meishi.cc/expert/" title="达人" _hover-ignore="1"></a> -->
+								</h4>
+								<span>菜谱：{$userInfo->cate_num}　</span>
+								<strong>{$cateInfo[0]->update_time|date="20y-m-d",###} &nbsp;/　<em id="viewclicknum">{$cateInfo[0]->hits}</em>人看过</strong>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		<!-- 菜品结束 -->
+
+		<div class="cp_body clearfix">
+
+			<!-- 主题开始 -->
+			<div class="cp_body_left" style="width:990px;">
+
+				<!-- 材料开始 -->
+				<div class="materials">
+					<p>
+						<strong>“</strong>{$cateInfo[0]->story}
+						<strong>”</strong>
+					</p>
+					<strong class="cpc_h2">用料</strong>
+
+					<div class="materials_box">
+
+						<div class="yl zl clearfix">
+							<h3><a href="javascript:;" title="{$cateInfo[0]->cate_title}的主料">主料</a></h3>
+							<ul class="clearfix">
+							{foreach $zlInfo as $zl}
+								<li class="">
+									
+									<div class="c">
+										<h4>
+											<a href="javascript:;">{$zl['name']}</a>
+											<span>{$zl['dose']}</span>
+										</h4>
+										
+									</div>
+								</li>
+								
+							{/foreach}
+								
+							</ul>
+						</div>
+
+
+						<div class="yl zl clearfix">
+							<h3><a  title="{$cateInfo[0]->cate_title}的主料">辅料</a></h3>
+
+							<ul class="clearfix">
+								{foreach $flInfo as $fl}
+								<li class="">
+									
+									<div class="c">
+										<h4>
+											<a href="javascript:;">{$fl['name']}</a>
+											<span>{$fl['dose']}</span>
+										</h4>
+										
+									</div>
+								</li>
+								{/foreach}
+								
+							</ul>
+						</div>
+
+
+					</div>
+				</div>
+				<!-- 材料结束 -->
+
+				<!-- 步骤开始 -->
+				<div class="measure">
+					<h2 class="cpc_h2">{$cateInfo[0]->cate_title}的做法</h2>
+					<div class="editnew edit">
+						{foreach $step as $num => $st}
+						<div class="content clearfix">
+							<em class="step">{$num + 1}.</em>
+							<div class="c">
+								<p>{$st['description']}</p>
+								<p>
+									<img class="conimg" src="__STATIC__/index/n1258614_143279899633053.jpg" alt="">
+								</p>						
+							</div>
+						</div>
+						{/foreach}			
+						<h2 class="cpc_h2">烹饪技巧</h2>
+						<p style="padding-left:100px;">{$st['cate_skill']}
+						</p>
+
+
+					</div>
+
+				</div>
+				<!-- 步骤结束 -->
+
+				<!-- comment  开始 -->
+				<div class="cp_comment" style="width:990px;">
+					<h2 class="cpc_h2">{$cateInfo[0]->cate_title}的讨论</h2>
+					
+                    <a name="pl"></a>
+
+                    <div class="cp_comments_list">
+                    	<div class="cp_com_form_w clearfix">
+                    		<a target="_blank" href="__SITE__/index/space/space/user_id/{$uid}" class="useravatar">
+                    			<img src="{$photo}">
+                    		</a>
+                    		<div class="form_w">                   			
+                    			<form method="post" action="__SITE__/index/catedetails/comment">
+                    				
+                    				<textarea id="cp_com_textarea" placeholder="想说点什么..." name="comment"></textarea>
+                    				
+                    				<input type="hidden" value="{$cateInfo[0]->id}" name="cate_id">
+                    				<input type="submit" id="cp_com_submit" value="评论"  class="submit">
+                    			</form>
+                    		</div>
+                    	</div>
+                 
+
+
+
+
+                    	<div id="newspls">
+                    	{foreach $comment as $com}
+                    		<div class="cp_comlist_w">
+
+                    			<ul class="clearfix">
+                    				<li class="clearfix commentslist_li">
+                    					<a target="_blank" href="__SITE__/index/space/space/user_id/{$com['user_id']}" class="avatar">
+                    						<img src="{$com['photo']}">
+                    						<h5>{$com['username']}</h5>
+                    					</a>
+                    					<div class="c">
+                    						<p class="p1">
+                    							{$com['content']}
+                    						</p>
+                    						<div class="info">
+                    							<span>
+                    								20{$com['create_time']|date="y-m-d",###}                  
+                    							</span>
+                    							{if ($com['user_id'] == $uid)}
+                    							<a href="__SITE__/index/Catedetails/delcomment/comment_id/{$com['id']}/cate_id/{$cateInfo[0]->id}" class="re re_start">删除</a>
+                    							{/if}
+                    							<em class="con_comlist_zanbtn"></em>
+                    						</div>
+                    					</div>
+                    				</li>
+                    			</ul>
+                    		</div>
+                    		{/foreach}
+                    		<div class="listtyle1_page">
+                    			<div class="listtyle1_page_w">
+                    				<ul>
+                    				<li style="float:left;"><span>{$page}</span></li>
+                    			</ul>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </div>
+			<!-- comment 结束 -->
+
+			</div>
+			<!-- 主题结束 -->
+		</div>
+
+	
+
+	</div>
+</div>
+<!-- end -->

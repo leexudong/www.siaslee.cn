@@ -1,0 +1,120 @@
+
+<div class="main_nav_sub_w">
+    <div class="main_nav_sub_ww">
+
+    <ul class="main_nav_sub">
+<li class="current"><a href="__SITE__/index/goods/goods" class="link pngFix"><strong>产品首页</strong></a></li>
+
+<li><a href="__SITE__/index/score/score" class="link pngFix"><strong>我的积分</strong></a></li>
+
+<li><a href="__SITE__/index/goods/order" class="link pngFix"><strong>我的订单</strong></a></li>
+	</ul>
+
+        </div>
+</div>
+
+<script type="text/javascript"  language="JavaScript"  src="__STATIC/index/js/jquery-1.11.3.js"></script>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1126px; display: none;"><a href="javascript:;" class="backtotop pngFix">回到顶部</a></div><div class="main_w clearfix">
+<div class="main clearfix">  
+			<!-- 蚂蚁线 start -->
+	<div class="jjg_path"><a href="__SITE__/index/goods/goods">家居馆</a> &gt; <a href="__SITE__/index/goods/goods">{$bigBlockName}</a> &gt; <a href="javascript:;">{$blockName}</a>
+	</div>  <!-- 蚂蚁线 end -->
+
+	<div class="jjg_listpage_left">  <!-- 左边商品推荐+最新商品 start -->
+		<div class="jjg_rank">
+			<h4>人气商品排行</h4>
+			<div class="jjg_rank_w">
+				<ul class="clearfix">
+					{foreach $hotGoods as $val}
+					<li>
+						<a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$val->id}">
+						<span>{$i++}</span>
+						<div class="img">
+						<img src="{$val->show1}">
+						</div>
+						<div class="c">
+							<p>{$val->goods_name}</p>
+							<strong>{$val->price}分</strong>
+						</div>
+						</a>
+					</li>
+					{/foreach}		
+				</ul>
+			</div>
+
+		</div>  <!-- 人气商品排行end -->
+		<div class="jjg_newgoods">
+			<h4>最新商品</h4>
+			<div class="jjg_newgoods_w">
+				<ul class="clearfix jjg_newgoods_list" id="jjg_newgoods_list" style="margin-left: -504px;">
+					{foreach $newGoods as $val}
+					<li>
+					<a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$val->id}" class="img"><img src="{$val->show2}"></a><p><a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$val->id}">{$val->goods_name}</a></p><strong>{$val->price}分</strong>
+					</li>
+					{/foreach}
+				
+				</ul>
+				<ul class="clearfix jjg_newgoods_list_dot" id="jjg_newgoods_list_dot">
+				<li class="" flag="1"></li><li flag="2" class=""></li><li flag="3" class="current"></li>
+				</ul>
+			</div>
+		</div>  <!-- 最新商品end -->
+	</div>   <!-- 左边商品推荐+最新商品 end -->
+
+	<!-- 系列商品展示 start -->
+	<div class="jjg_listpage_right">
+		<div class="jjg_sx_box">
+			<h4><a href="javascript:;">{$blockName}</a> - 商品筛选</h4>
+			
+		</div>
+		<div class="jjg_goods_mainlist">  <!--  商品 -->
+			<div class="jjg_goods_mainlist_px">
+				<a href="__SITE__/index/goods/goodsType/tid/{$tid}/choice/0" class="new  ">最新</a>
+
+				
+				<a href="__SITE__/index/goods/goodsType/tid/{$tid}/choice/1"  class="jf" >积分</a>
+
+				<a href="__SITE__/index/goods/goodsType/tid/{$tid}/choice/2"  class="dhh"  >我能兑换的商品</a>
+				
+			</div> 
+
+			<div class="clearfix jjg_goods_mainlist_0">
+				{if empty($newList)}
+				<div class="jjg_goods_mainlist_item br0">
+					{$data}
+				</div>
+				{else}
+					
+					{foreach $newList as $val}
+					<!-- <div class="jjg_goods_mainlist_item br0">
+						<a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{/$val->id}" class="img"><img src="{/$val->show1}">
+						</a>
+						<a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{/$val->id}" class="t">{/$val->goods_name}
+						</a>
+						<strong class="price">{/$val->price}积分</strong>
+						<span class="xl">已售：{/$val->sold_num} 份</span>
+					</div> -->
+
+					<div class="jjg_goods_mainlist_item br0">
+						<a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$val['id']}" class="img"><img src="{$val['show1']}">
+						</a>
+						<a target="_blank" href="__SITE__/index/goods/detailGoods/gid/[$val['id']" class="t">{$val['goods_name']}
+						</a>
+						<strong class="price">{$val['price']}积分</strong>
+						<span class="xl">已售：{$val['sold_num']} 份</span>
+					</div>
+					{/foreach}
+				
+					<div class="listtyle1_page">
+						<div class="listtyle1_page_w">
+							{$newPage}
+						</div>
+					</div>
+				{/if}
+			</div>
+	
+	</div>  <!-- 商品 -->
+
+
+	</div>  <!-- 系列商品展示 end -->
+</div>

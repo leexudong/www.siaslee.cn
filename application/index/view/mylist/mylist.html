@@ -1,0 +1,104 @@
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1206px; bottom: 20px;">
+	<a href="#" class="backtotop pngFix">回到顶部</a>
+</div>
+
+
+<div class="main_w clearfix">
+	<div class="main">
+		<!-- 第一start -->
+		<div class="cd_showbox clearfix">
+			<div class="infobox clearfix">
+				<div class="cdinfo">
+					<h1>我的菜单</h1>
+					<p>暂无简介</p>
+					<span>最后修改：21分前</span>
+				</div>
+
+				<div class="authorinfo">
+					<div class="user">
+						<a href="__SITE__/index/space/space/user_id/{$userInfo->id}" class="img">
+							<img src="{$userInfo->photo}">
+							<span class="masker"></span>
+						</a>
+						<div class="info">
+							<h4>
+								<a href="__SITE__/index/space/space/user_id/{$userInfo->id}">{$userInfo->username}</a>
+							</h4>
+							<span>菜谱:{$userInfo->cate_num} </span>
+						</div>
+					</div>
+
+					<div class="btns">
+						<a href="__SITE__/index/space/collect/user_id/{$userInfo->id}" class="addToFav_Cd fl mr10" id="addCdToFavInCon">收藏菜单</a>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<!-- 第一结束 -->
+
+		<h3 class="bbtitles">{$userInfo->signature}</h3>
+		<div class="clearfix">
+			<div class="listtyle1_w clearfix" id="listtyle1_w" style="width:956px;margin-left:30px;">
+				<div class="listtyle1_list clearfix" id="listtyle1_list">
+
+
+					<!-- 第二 star -->
+					{foreach $catelist as $cate}
+					<div class="listtyle1 ml0">
+						<div class="img">
+							<a target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$cate['user_id']}/cate_id/{$cate['id']}">
+								<img src="{$cate['final_pic']}" width="232" height="232">
+							</a>
+
+						</div>
+
+						<div class="info2">
+							<!-- <a target="_blank" href="http://www.meishij.net/chufang/diy/recaipu/176924.html" class="img"></a> -->
+							<div class="info2_c" style="left: 232px; opacity: 0;">
+								<a target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$cate['user_id']}/cate_id/{$cate['id']}" class="link_cp">
+									<ul>
+										
+										<li class="kw">鲜美</li>
+										<li class="nd">{$cate['difficulty']}</li>
+										<li class="sj">&lt;{$cate['ready_time']}</li>
+									</ul>
+								</a>
+
+							</div>
+						</div>	
+
+						<div class="info1">
+							<h3>
+								<a target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$cate['user_id']}/cate_id/{$cate['id']}">{$cate['cate_title']}</a>
+							</h3>
+							<div class="d1">
+								<span>{$cate['comment_num']} 评论</span>
+								<span>{$cate['hits']} 人气</span>
+							</div>
+							<a target="_blank" class="author" href="__SITE__/index/space/space/user_id/{$userInfo->id}">{$userInfo->username}</a>
+						</div>
+
+					</div>
+					{/foreach}
+					<!-- 第二 end -->
+
+					
+					<!-- listtyle1_list end -->
+					<div class="listtyle1_page">
+						<div class="listtyle1_page_w">
+							<ul>
+								<li style="float:left;"><span>{$page}</span></li>
+							</ul>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>

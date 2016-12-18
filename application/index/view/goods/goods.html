@@ -1,0 +1,171 @@
+
+<div class="main_nav_sub_w">
+    <div class="main_nav_sub_ww">
+
+    <ul class="main_nav_sub">
+<li class="current"><a href="__SITE__/index/goods/goods" class="link pngFix"><strong>产品首页</strong></a></li>
+
+<li><a href="__SITE__/index/score/score" class="link pngFix"><strong>我的积分</strong></a></li>
+
+<li><a href="__SITE__/index/goods/order" class="link pngFix"><strong>我的订单</strong></a></li>
+	</ul>
+
+    </div>
+</div>
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1126px;"><a href="javascript:;" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+<div class="main">
+
+<h3 class="bbtitles">美厨出玉食 精细选家居</h3>
+
+	<div class="jjg_titles">美食杰特权优惠区----生活，就是要精打细算  </div>
+	<div class="jjg_con1">  <!-- 两个商品开始 -->
+			{foreach $twoList as $value}
+			<div class="jjg_con1item ">
+			<a href="__SITE__/index/goods/detailGoods/gid/{$value->id}" target="_blank" class="img"><img src="{$value->show1}"></a>
+			<div class="c">
+				<h4><a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$value->id}">{$value->goods_name}</a></h4>
+				<p><span class="t">兑换积分：</span><strong>{$value->price}分</strong></p>
+				<p><span class="t">限　　量：</span> {$value->total_num- $value->sold_num }件</p>
+				<div class="btn"><a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$value->id}">查看详情</a>　</div>
+			</div>
+		</div>
+		{/foreach}
+			
+		</div> <!-- 两个样品商品结束 -->
+<script>
+var sto = "";
+$(function(){
+	$(".jjg_foods_left_list li").mouseenter(function(){
+
+		var _this = $(this);
+		//console.log(_this);
+		_this.siblings().find("em").hide();
+		clearTimeout(sto);
+		sto = setTimeout(function(){
+			jjg_index_tabs(_this);
+		},200);
+	});
+});
+function jjg_index_tabs(ele){
+	var _this = ele;
+		_this.siblings().removeClass("current");
+		_this.addClass("current");
+		_this.find("em").show();
+		//var f = _this.attr("f");
+	
+		var id = _this.attr("id");
+		var showitem = _this.parents(".jjg_foods_left").next().find(".jjg_foods_show_"+id);
+		
+		if(showitem.length>0){
+			//alert(111);
+				showitem.siblings().hide();
+				showitem.show();
+				ele.find("em").hide();
+			}
+		else{
+			//$.post("__SITE__/index/goods/do", { pid: f, id: id },
+			$.post("__SITE__/index/goods/do", {  id: id },
+		   function(data){
+		   	//console.log(data);
+		     _this.parents(".jjg_foods_left").next().append(data);
+			var showitem = _this.parents(".jjg_foods_left").next().find(".jjg_foods_show_"+id); 
+				showitem.siblings().hide();
+				showitem.show();
+			ele.find("em").hide();
+
+		   });
+		}
+		
+}
+</script>
+
+	<div class="jjg_titles">优质产品推荐区</div>
+	<div class="jjg_foodsitem">  <!-- 111start -->
+		<div class="jjg_foods_left jjg_foods_left1"> <!-- 厨房家居开始 -->
+			<div class="t"><span class="line"></span>厨房家居</div>
+            <ul class="clearfix jjg_foods_left_list">
+                {foreach $kitchenList as $val}
+            	<li class="current" f="{$val->pid}" id="{$val->id}">
+            		<a target="_blank" href="__SITE__/index/goods/goodstype/tid/{$val->id}">{$val->block_name}<em>加载中...</em></a>
+            	</li>
+            	{/foreach}
+				
+            </ul>
+			<div class="jjg_foods_left_bg"></div>
+		</div>  
+		<div class="jjg_foods_show">  <!-- 厨房家居图片 -->
+             <div class="jjg_foods_show_0">
+                 <div class="showitems">
+                 	{foreach $defaultList as $val}
+   	                <div class="jjg_foods_show_small"><a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$val->id}">
+   	                <img src="{$val->show1}">
+   	                </a>
+   	                </div>
+   	                {/foreach}
+   	              
+                 </div>
+             </div>
+		  </div> <!-- 厨房家居图片结束 -->
+	</div>  <!-- 111end -->
+
+	<div class="jjg_foodsitem">  <!--  厨房电器start -->
+		<div class="jjg_foods_left jjg_foods_left2">
+			<div class="t"><span class="line"></span>厨房电器</div>
+            <ul class="clearfix jjg_foods_left_list">
+           	 	{foreach $electricalList as $val}
+	           	
+				 <li f="{$val->pid}" id="{$val->id}"><a target="_blank" href="__SITE__/index/goods/goodstype/tid/{$val->id}">{$val->block_name}<em>加载中...</em></a></li>
+				 {/foreach}
+				 
+          	
+          	</ul>
+            
+			<div class="jjg_foods_left_bg"></div>
+		</div>
+		<div class="jjg_foods_show">
+        
+          <div class="jjg_foods_show_0">
+                <div class="showitems">
+                    {foreach $defaultList2 as $val}
+                    <div class="jjg_foods_show_small "><a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$val->id}"><img src="{$val->show1}"></a>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+        
+		</div>
+	</div>  <!--  厨房电器end -->
+
+		<!-- 厨房调料start -->
+	<div class="jjg_foodsitem">
+		<div class="jjg_foods_left jjg_foods_left3"> <!-- 选项卡start -->
+			<div class="t"><span class="line"></span>厨房调料</div>
+            
+            <ul class="clearfix jjg_foods_left_list">
+            	{foreach $flavourList as $val}
+                
+				<li f="{$val->pid}" id="{$val->id}"><a target="_blank" href="__SITE__/index/goods/goodstype/tid/{$val->id}">{$val->block_name}<em>加载中...</em></a></li>
+				{/foreach}
+				
+            </ul>
+            
+			<div class="jjg_foods_left_bg"></div>
+		</div>  <!-- 选项卡end -->
+		<div class="jjg_foods_show">  <!-- 调料图片start -->
+           <div class="jjg_foods_show_0">
+                <div class="showitems">
+                 {foreach $defaultList3 as $val}
+                   
+                    <div class="jjg_foods_show_small "><a target="_blank" href="__SITE__/index/goods/detailGoods/gid/{$val->id}"><img src="{$val->show1}"></a>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+		</div>  <!-- 调料图片end -->
+	</div>  <!--  厨房调料end -->
+	
+</div>
+</div>  

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=ie=7 http-equiv=x-ua-compatible>
+<link rel="stylesheet" href="__STATIC__/admin/css/pintuer.css">
+<LINK rel=stylesheet type=text/css href="__STATIC__/admin/css/admincp.css">
+<META name=GENERATOR content="MSHTML 8.00.6001.19120"></HEAD>
+<BODY>
+<SCRIPT type=text/javascript>
+if(ISFRAME && !parent.document.getElementById('leftmenu')) {
+  redirect(admincpfilename + '?frames=yes&' + document.URL.substr(document.URL.indexOf(admincpfilename) + 10));
+}
+</SCRIPT>
+<div class="container" id="cpcontainer">
+  <div class="floattop">
+    <div class="itemtitle">
+      <h3>添加商品</h3>
+    </div>
+  </div>
+  <div class="floattopempty"></div>
+
+  <form name="cpform" method="post" autocomplete="off" action="__SITE__/admin/goods/add" id="cpform" enctype="multipart/form-data">
+  <table class="tb tb2 ">
+    <tr><td colspan="2" class="td27" s="1">商品名:</td></tr>
+    <tr class="noborder">
+      <td class="vtop tips2" s="1"><input type="text" name="goodsName"></td>
+    </tr>
+     <tr><td colspan="2" class="td27" s="1">商品类别:</td></tr>
+    <tr class="noborder">
+      <!-- <td class="vtop tips2" s="1"><input type="text" name="goodsblock"></td> -->
+      <td class="vtop tips2" s="1">
+        <select name="goodsBlock">
+            <option value="4">茶具</option>
+            <option value="5">刀具</option>
+            <option value="6">餐具</option>
+            <option value="7">锅具</option>
+            <option value="8">常用电器</option>
+            <option value="9">榨汁搅拌</option>
+            <option value="10">烘焙帮手</option>
+            <option value="11">中式调料</option>
+            <option value="12">西式调料</option>
+           
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="td27" s="1">价格(兑换所需积分):</td>
+    </tr>
+    <tr>
+        <td class="vtop tips2" s="1"><input type="text" name="goodsPrice"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="td27" s="1">总数量</td>
+    </tr>
+    <tr>
+       <td class="vtop tips2" s="1"><input type="text" name="totalNum"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="td27" s="1">商品详情图：</td> 
+    </tr>
+    <tr>
+     <td><input type="file" name="image[]"</td>
+   </tr> 
+
+   <tr>
+      <td colspan="2" class="td27" s="1">商品展示图1：</td> 
+    </tr>
+    <tr>
+     <td><input type="file" name="image[]"</td>
+   </tr> 
+   <tr>
+      <td colspan="2" class="td27" s="1">商品展示图2：</td> 
+    </tr>
+    <tr>
+     <td><input type="file" name="image[]"</td>
+   </tr> 
+   <tr>
+      <td colspan="2" class="td27" s="1">商品展示图3：</td> 
+    </tr>
+    <tr>
+     <td><input type="file" name="image[]"</td>
+   </tr> 
+   <tr>
+      <td colspan="2" class="td27" s="1">商品展示图4：</td> 
+    </tr>
+    <tr>
+     <td><input type="file" name="image[]"</td>
+   </tr> 
+   <tr>
+      <!-- <td><input type="submit" name="sub" value="提交"></td> -->
+     <td> <button class="button bg-main icon-check-square-o" name="sub" type="submit"> 提交</button></td>
+
+   </tr>
+  </form>
+  
+  </div>
+  <!-- <div style="height:100px;width:100%"></div> -->
+</BODY>
+</HTML>

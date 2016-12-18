@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=ie=7 http-equiv=x-ua-compatible>
+<link rel="stylesheet" href="__STATIC__/admin/css/pintuer.css">
+<LINK rel=stylesheet type=text/css href="__STATIC__/admin/css/admincp.css">
+<script type="text/javascript" src="__STATIC__/admin/js/jquery-1.11.3.min.js"></script>
+<META name=GENERATOR content="MSHTML 8.00.6001.19120"></HEAD>
+<BODY>
+
+  <div id="append_parent"></div>
+  <div class="container" id="cpcontainer">
+    <script type="text/JavaScript">parent.document.title = '标题';</script>
+    <div class="itemtitle"><h6>上架商品</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="__SITE__/admin/goods/set" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$count} </strong>种上架商品
+        </th>
+      </tr>
+     
+      <tr class="header">
+        <th></th>
+        <th >商品名字</th>
+        <th>商品图</th>
+        <th>价格(兑换所需积分)</th>
+        <th>上架时间</th>
+        <th>总数量</th>
+        <th>售出数量</th>
+        <th>库存</th>
+      </tr>
+      {foreach $list as $v}
+      <tr class="hover">
+       <td class="td25"><input type="checkbox" name="gidarray[]" value="{$v->id}" class="checkbox"></td> 
+        <td style="width:200px">{$v->goods_name}</td>
+        <td><img src="{$v->show1}" style="width:50px;height:50px"></td>
+        <td><input type="text" name="goodsPrice[{$v->id}]" value="{$v->price}" style="width:80px"></td>
+        <td>{$v->create_time}</td>
+        <td><input type="text" name="totalNum[{$v->id}]" value="{$v->total_num}" style="width:50px"></td>
+        <td><input type="text" name="soldNum[{$v->id}]" value="{$v->sold_num}" style="width:50px"></td>
+        <td>{$v->total_num - $v->sold_num}</td>
+        <td>
+          <a href="javascript:;" gid="{$v->id}" onclick="del(this)" class="act">下架</a>
+        </td>
+      </tr>
+      {/foreach}
+      <tr>
+        <td colspan="15">
+          <div class="fixsel">
+            <input type="submit" class="btn" id="submit_submit" name="submit" title="按 Enter 键可删除" value="提交" />
+          </div>
+        </td>
+
+      </tr>
+      </table>
+
+    </form>
+   <!-- <ul><li>{/$page}</li></ul> -->
+  <!--  <ul class="postforum_page">
+   <li class="current"><span>{$page}</span></li>
+   </ul> -->
+   <!--  <div class="page">
+      <ul><li>{/$page}</li></ul>
+      
+   </div> -->
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$page}
+  
+    <script type="text/javascript">
+        function del(aobj)
+        {
+          var id = aobj.getAttribute('gid');
+          var oo = '';
+          $.ajax({
+             type: "POST",
+             url: "__SITE__/admin/goods/del",
+             data: {gid:id},
+             success: function(data,type){
+              eval('('+data+')');
+                obj = eval('('+data+')');
+               if(obj.status){
+                  window.location.href = '__SITE__/admin/index/goods';
+               }else{
+                alert(obj.msg);
+               }
+             }
+          });
+        }
+
+        //上架
+          //移出回收站
+       function move(tt)
+      {
+        var gid = tt.getAttribute('gid');
+          var oo = '';
+          //console.log(tt.parent());
+         $.ajax({
+              method: 'post',
+              url: "__SITE__/admin/goods/move",
+             
+              data: {
+                id:gid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                
+                 if(oo.status){   
+                  window.location.href = '__SITE__/admin/index/goods';
+                 }else{
+                  alert(oo.msg);
+                 }
+                  
+              }
+           });  
+     }
+    </script>
+    <br>
+    <br>
+   
+    <br>
+    <hr>
+    <br>
+    <!-- 下架商品 -->
+    <div class="itemtitle"><h6>下架商品</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$deleteCount} </strong>种下架商品
+        </th>
+      </tr>
+      <tr class="header">
+        <th>商品名</th>
+        <th>商品图</th>
+        <th>下架时间</th>
+        <th></th>
+      </tr>
+      {foreach $deleteGoods as $v}
+      <tr class="hover">
+        <td>{$v->goods_name}</td>
+        <td><img src="{$v->show1}" style="width:50px;height:50px"></td>
+        <td>{$v->create_time}</td>
+        <td><a href="javascript:;" onclick="move(this)" gid="{$v->id}">上架</a></td>
+      </tr>
+      {/foreach}
+      </table>
+    </form>
+    {$twopage}
+  </div>
+  <div style="height:100px;width:100%"></div>
+</BODY>
+</HTML>

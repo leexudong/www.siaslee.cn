@@ -1,0 +1,130 @@
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1206px; display: none; bottom: 20px;">
+	<a href="#" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix"><script type="text/javascript">
+function delete_sc_recipe(nid){
+	if(confirm("确定取消收藏这个菜谱么？")){
+		location.href = "/create_caidan.php?act=deletenall&nid=" + nid;
+	}
+	return false;
+}
+</script>
+<div class="main clearfix">
+	<h1 class="bbtitles">欢迎来到我的美食空间</h1>
+<div class="userheader">
+	<div class="avatar_w"><a href="javascript:;"><img src="{$userInfo->photo}"></a></div>
+	<div class="userh_main">
+		<div class="info1">
+			<h1>{$userInfo->username}
+				<a target="_blank" title="新人" href="javascript:;"></a>
+			</h1>
+			<span class="info">
+			<em><a href="javascript:;">积分：{$userInfo->score}</a></em> <br><em>2016-11-25加入美食杰</em> 
+			{if $userInfo->id == $uid}
+			| <em><a href="__SITE__/index/space/personInfo">编辑个人资料</a></em>
+			{/if}
+			</span>
+			
+		</div>
+			</div>
+	<div class="user_userinfo">
+		<ul class="clearfix">
+				<!-- <li class="li1">
+					<a href="javascript:;"><span>关注</span><strong>1</strong></a>
+				</li>
+				<li class="li2"><a href="javascript:;">
+					<span>粉丝</span><strong>0</strong></a>
+				</li> -->
+				<li class="li3">
+					<a href="__SITE__/index/create/create"><span>发布菜谱</span><strong>{$userInfo->cate_num}</strong></a>
+				</li>
+				<!-- <li class="li4">	
+					<a href="javascript:;"><span>体质</span><strong>阴虚质</strong></a>
+				</li> -->
+			</ul>
+	</div>
+</div>
+
+<style>
+    .dryrw_btn{display: inline-block;vertical-align: top;height: 22px;padding: 0px 12px;background: #ff3232;  ext-align: center;color: #fff;line-height: 22px;}
+    .dryrw_btn:hover{background:#e80000;}
+</style>
+
+<div class="user_nav">
+	<ul>
+		<li ><a href="__SITE__/index/space/space/user_id/{$userInfo->id}">我的作品</a></li>
+
+		<li class="current"><a href="__SITE__/index/space/collect/user_id/{$userInfo->id}">收藏</a></li>
+
+				
+	</ul>
+</div>
+	<div class="user_main clearfix">
+
+		<div class="user_inner_tab">
+			<ul class="user_inner_tab_ul">
+				<li><a href="__SITE__/index/space/collect/user_id/{$userInfo->id}" class="current link">我的收藏</a></li>
+				
+			</ul>
+		</div>
+
+		<div class="usc_w clearfix">
+			<div class="listtyle3_list1 clearfix" id="listtyle1_list" style="width:764px;">
+				{if empty($list)}
+				<div class="listtyle3 listtyle3_332 ml0">
+					该用户没有收藏任何商品
+				</div>
+				{else}
+				{foreach $list as $shou}
+				
+				<div class="listtyle3 listtyle3_332 ml0">
+					<div class="img">
+						<a target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$shou->user_id}/cate_id/{$shou->id}" title="{$shou->cate_title}" class="img">
+							<img class="cpimg" alt="{$shou->cate_title}" src="{$shou->final_pic}" width="232" height="232">
+						</a>
+					</div>
+
+					<div class="info2">
+						<a target="_blank" title="{$shou->cate_title}" href="javascript:;" class="img"></a>
+						<div class="info2_c" style="left: 230.911px; opacity: 0.00469239;">
+							<a target="_blank" title="{$shou->cate_title}" href="__SITE__/index/catedetails/catedetails/user_id/{$shou->user_id}/cate_id/{$shou->id}" class="link_cp">
+								<ul>
+									
+									<li class="kw pngFix">美味</li>
+									<li class="nd pngFix">{$shou->difficulty}</li>
+									<li class="sj pngFix">&lt;{$shou->cook_time}</li>
+								</ul>
+							</a>
+						</div>
+					</div>		
+
+					<div class="info3">
+						<h3>
+							<a target="_blank" title="{$shou->cate_title}" href="__SITE__/index/catedetails/catedetails/user_id/{$shou->user_id}/cate_id/{$shou->id}">{$shou->cate_title}</a>
+						</h3>
+						<div class="d1">
+							<span>{$shou->comment_num}评论</span><span>{$shou->hits}人气</span>
+						</div>
+						<a target="_blank" class="author" href="http://i.meishi.cc/cook.php?id=8378674">{$shou->author}</a>	
+						{foreach $cid as $id}
+						{if $userInfo->id == $uid}	
+						<div class="delete" style="display:block;">
+							<a href="__SITE__/index/space/cancle/user_id/{$uid}/collect_id/{$id}"  class="delete_b">取消收藏</a> 
+						</div>	
+						{/if}	
+						{/foreach}
+					</div>
+				</div>
+				
+				{/foreach}
+				{/if}
+				
+			</div>
+
+			
+		</div>
+
+	</div>
+	</div>
+	</div>

@@ -1,0 +1,204 @@
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1126px; display: none; bottom: 20px;"><a href="#" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+
+<div class="main">
+
+<div class="navstyle1 mt20">
+<ul>
+	<!-- <li ><a href="__SITE__/index/topic/tableTime/topicblock/1">餐桌时光</a></li> -->
+	<li class="current"><a href="__SITE__/index/topic/palyBake/topicblock/2">玩转烘焙</a></li>
+	<li ><a href="__SITE__/index/topic/cateClass/topicblock/3">美食课堂</a></li>
+</ul>
+
+</div>
+	<div class="forum_main clearfix">
+	<div class="forum_list_top1 clearfix">
+		<div class="img"><img src="__STATIC__/index/images/tlz_10.png"></div>
+		<div class="des">
+			<h1>玩转烘焙</h1>
+			<div class="p clearfix"><strong>小组介绍</strong><p>走上烘焙路，一去不复返，记录属于你的烘焙时光。</p>
+			</div>					
+		</div>
+	</div>
+<div class="forumlist_style2" style="margin:0px;">
+<div class="forumpage">
+	<a href="__SITE__/index/topic/publishTopic" class="postforum_btn">发布话题</a>	
+    
+<ul class="postforum_page">
+<li class="current"><span>{$page}</span></li></ul>
+</div>
+<div class="forumlist_style2_toolbar">
+<div class="postskind">查看主题
+<dl id="chosepostskind">
+</dl>
+</div>
+<div class="re_and_view">回复/查看</div>
+<div class="author">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者</div>
+</div>
+<div class="forumlist_style2_list">
+<ul>
+			
+			{foreach $tableTopicList as $value}
+			<li class="clearfix">
+            
+           	<div class="div1"><em class="img"></em></div>
+			<div class="div2">
+				<h3><a target="_blank" href="__SITE__/index/TopicComment/TopicComment/tid/{$value->id}">@<strong style="font-weight:bold;">{$value->title}</strong></a></h3>
+	            <div>
+	            </div>
+        	</div>
+			<div class="div3"><strong>{$value->comment_num}</strong><em>{$value->hits}</em></div>
+			<div class="div4">
+				<strong>
+					<a target="_blank" href="__SITE__/index/space/space/user_id/{$value->user->id}">{$value->user->username}</a><a target="_blank" class="v_ssmall" href="javascript:;" title="达人" _hover-ignore="1"></a>					
+				</strong>
+				<em>{$value->create_time}</em>
+			</div>
+			{/foreach}
+           </li>	
+</ul>
+</div>
+<div class="forumpage"><a href="__SITE__/index/topic/publishTopic" class="postforum_btn">发布话题</a>
+<ul class="postforum_page">
+	<li class="current"><span>{$page}</span></li></ul>
+</div>
+</div>
+<div class="forum_right">
+				<div class="forum_right_style1">
+					<dl>
+					<dt class="forum_right_dt">本版热门主题</dt>
+							{if empty($hitList)}
+								<dd>暂无数据</dd>
+							{else}
+								{foreach $hitList as $value}
+			                    <dd><a href="__SITE__/index/TopicComment/TopicComment/tid/{$value->id}">{$value->title}</a>
+			                    </dd>
+			                    {/foreach}
+	                  		{/if}
+					                    
+                    </div>
+				<div class="forum_right_style2">
+                     <dl>
+                    <dt class="forum_right_dt">本版今日发帖达人</dt>
+							{if empty($users)}
+								<dd>暂无数据</dd>
+							{else}
+	                            <dd>
+	                            <a class="img" href="__SITE__/index/space/space/user_id/{$userid}"><img src="{$hotuserphoto}"></a>
+	                            <div class="c">
+	                            <h4><a href="__SITE__/index/space/space/user_id/{$userid}">{$hotusername}</a></h4>
+	                            <a target="_blank" href="__SITE__/index/topic/allTopic/uid/{$userid}"><span>今日发帖：{$maxcount}</span></a></div>
+	                            <!-- <a class="followTa" uid="2839182"></a> -->
+	                        	</dd>
+                            {/if}        
+                                        
+                     </dl>
+                </div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$.each($(".admin_checkbox[checked='checked']"),function(){
+		$(this).attr("c","1");
+		if(numof_checked() > 0){$("#admintoolbar").show();}
+		refreshnum();
+	});
+	$("#movepostsbtn").click(function(){
+		var arr = "";
+		$.each($(".admin_checkbox[c='1']"),function(){
+			var n = $(this).attr("tid");
+			arr = arr+n+"|"
+		});
+		Alert("选择了"+numof_checked()+"篇帖子", "iframe:perform.php?id="+arr+"&gid=9", "400", "300", "false", "", "true", "img");
+	});
+	$("#delpostsbtn").click(function(){
+		var arr = "";
+		$.each($(".admin_checkbox[c='1']"),function(){
+			var n = $(this).attr("gtid");
+			arr = arr+n+"|"
+		});
+		var gtid=arr;
+		var type='del';
+		$.post("performdo.php",{
+			gtid:gtid,
+			gid:9,
+			type:type
+	    },
+	  function(data,status){
+		  if(data=='succ'){
+			 alert('删除完成！');
+		  }
+	  });
+	});
+	$(".admin_checkbox").click(function(){
+		if($(this).attr("c") == "1"){
+			$(this).attr("c","0");
+			$(this).removeAttr("checked");
+			$("#admintoolbar_checkallbtn").attr("c","0");
+			$("#admintoolbar_checkallbtn").removeAttr("checked");
+
+		}else{
+			$(this).attr("c","1");
+			$(this).attr("checked","checked");
+		}
+		if(numof_checked()>0){
+			$("#admintoolbar").show();
+		}else{
+			$("#admintoolbar").hide();
+		}
+		refreshnum();
+	});
+	$("#admintoolbar_checkallbtn").click(function(){
+		if($(this).attr("c") == "1"){
+			$(".admin_checkbox").removeAttr("checked");
+			$(".admin_checkbox").attr("c","0");
+			$(this).attr("c","0");
+			refreshnum();
+		}else{
+			$(".admin_checkbox").attr("checked","checked");
+			$(".admin_checkbox").attr("c","1");
+			$(this).attr("c","1");
+			refreshnum();
+		}
+	});
+	$(".zoomimgs .zoomed img").unbind("click").live("click",function(){
+		var bsrc=$(this).attr("bsrc");
+		var ssrc=$(this).attr("ssrc");
+		$(this).attr("src",ssrc);
+		$(this).parent(".w").parent("li").removeClass("zoomed").addClass("unzoomed");
+		$(this).parent(".w").parent("li").siblings().show();
+		$(this).parents("ul").removeClass("opened");
+	});
+	$(".arrowright").live("click",function(){
+		$(this).parent(".w").parent("li").find("img").click();
+		$(this).parent(".w").parent("li").next().find("img").click();
+	});
+	$(".arrowleft").live("click",function(){
+		$(this).parent(".w").parent("li").find("img").click();
+		$(this).parent(".w").parent("li").prev().find("img").click();
+	});
+	$(".zoomimgs .unzoomed img").unbind("click").live("click",function(){
+		var bsrc=$(this).attr("bsrc");
+		var ssrc=$(this).attr("ssrc");
+		$(this).attr("src",bsrc);
+		$(this).parent(".w").parent("li").removeClass("unzoomed").addClass("zoomed");
+		$(this).parent(".w").parent("li").show();
+		$(this).parent(".w").parent("li").siblings().hide();
+		$(this).parents("ul").addClass("opened");
+	});
+});
+function windownclose(){
+		$("#windown-close").click();
+}
+function numof_checked(){
+	return $(".admin_checkbox[c='1']").length;
+}
+function refreshnum(){
+	$("#admintoolbar_num").html(numof_checked());
+}
+</script>
+

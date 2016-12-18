@@ -1,0 +1,107 @@
+﻿
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top">
+	<a href="#" title="返回家常菜谱大全的顶部" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+	<div class="main">
+		<div class="listnav clearfix" id="listnav">
+			<!-- <ul class="listnav_ul" id="listnav_ul">
+				<li disable="1"><a class="link">我的美食属性（未开放）</a></li>
+				{foreach $data1 as $val}
+				<li ><a href="{$val['link']}" class="link">{$val['block_name']}</a></li>
+				{/foreach}
+			</ul> -->
+			<ul class="listnav_ul" id="listnav_ul">
+				<li disable="1"><a class="link">我的美食属性（未开放）</a></li>
+				<li class="current hover">
+					<h1><a href="__SITE__/index/healtheat/healtheat" class="link">饮食健康</a></h1>
+				</li>
+				<li ><a href="__SITE__/index/healtheat/bing" class="link">疾病调理</a></li>
+
+				<li ><a href="__SITE__/index/healtheat/zangfu" class="link">脏腑调理</a></li>
+			
+
+			</ul>
+		</div>	
+		<div class="bbtitles">饮食健康
+			<span class="paixu">
+				<a href="__SITE__/index/healtheat/healtheat/sel/1" class="current">最新</a> | <a href="__SITE__/index/healtheat/healtheat/sel/2">最热</a>
+			</span>
+		</div>
+		<!-- <div class="liststyle1_w clearfix"></div> -->
+
+		<div class="listtyle1_w" id="listtyle1_w">
+			<div class="listtyle1_list clearfix" id="listtyle1_list" style="width:1030px;">
+				{foreach $fenLei as $value}
+				{if $value['small_name'] == '饮食健康'}
+				<div class="listtyle1">
+					<a target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$value['user_id']}/cate_id/{$value['id']}" title="{$value['cate_title']}" class="big">
+						<img class="img" alt="{$value['cate_title']}" src="{$value['final_pic']}">
+						<div class="i_w">
+							<div class="i" style="margin-top: 0px;">
+								<div class="c1">
+									<strong>{$value['cate_title']}</strong>
+									<span>{$value['comment_num']}评论  {$value['hits']} 人气</span>
+									<em>{$value['username']}</em>
+								</div>
+								<div class="c2">
+									<ul>
+										<li class="li1">{$value['cook_time']}分钟</li>
+										<li class="li2">{$value['small_name']} </li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				{/if}
+				{/foreach}
+			</div>
+			<!-- listtyle1_list end -->
+			<div class="listtyle1_page">
+				<div class="listtyle1_page_w">
+					<ul>
+						<li style="float:left;"><span>{$page}</span></li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript">
+	var is_list_adding = 0;
+	function list_add_shicai(){
+		var q = $('#yl_q').val();
+		if(q != '' && q != '请输入您想查找的食材'){
+			if(is_list_adding == 0){
+				is_list_adding = 1;
+				$.get('/ajax/list_add_yl.php?c=' + encodeURIComponent(q), null,
+					function(data) {
+						is_list_adding = 0;
+						data = parseInt(data);
+						if(data > 0){
+							location.href = '/list.php?sortby=update&lm=13&yl=' + data;
+						}else{
+							alert('未能识别的食材，请尝试其他关键字');
+							$('#yl_q').val('');
+						}
+					});
+			}
+		}else{
+			alert('请输入您想查找的食材');
+		}
+	}
+	$(function(){
+		var js = document.createElement("script");
+		js.language = "javascript";
+		js.src = "http://click.meishij.net/pl/lclick.php?i=13&addclick=1&_" +(new Date()).getTime();
+		document.body.appendChild(js);
+		$("#yl_q").keypress(function(event) {
+			if (event.keyCode == 13) {
+				list_add_shicai()
+			}
+		});
+	});
+</script>
+</div>

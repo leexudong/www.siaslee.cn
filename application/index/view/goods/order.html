@@ -1,0 +1,91 @@
+
+<div class="main_nav_sub_w">
+    <div class="main_nav_sub_ww">
+
+    <ul class="main_nav_sub">
+<li ><a href="__SITE__/index/goods/goods" class="link pngFix"><strong>产品首页</strong></a></li>
+
+<li><a href="__SITE__/index/score/score" class="link pngFix"><strong>我的积分</strong></a></li>
+
+<li class="current"><a href="javascript:;" class="link pngFix"><strong>我的订单</strong></a></li>
+	</ul>
+
+    </div>
+</div>
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1126px;"><a href="#" class="backtotop pngFix">回到顶部</a></div><div class="main_w clearfix"><div class="main">
+<div class="jf_my">
+		<a href="__SITE__/index/space/space/user_id/{$defaultData['id']}" class="jf_myavatar">
+		<img src="{$defaultData['photo']}">
+		</a>
+		<div class="jf_myinfo">
+			<div class="jf_username">{$defaultData['username']}           
+			 <!-- <a href="javascript:void(0);" onclick="jifenpage_sign_in(1);" class="qdbtn">签到</a> -->
+            </div>
+
+			<!-- <div class="jf_desss">普通会员LV1 ：新人</div>
+			
+			            <div class="jf_jfhz1 jf_jfhz1_user1_2">
+			                <span class="s1"></span><span class="b"><em style="width:12px;"></em></span><span class="s2"></span>
+			            </div>
+			             -->
+
+			<div class="jf_jfhz">{$defaultData['score']}<em>积分</em></div>
+		</div>
+
+	
+		
+	</div>
+    
+	<div class="jifen_nav1">
+		<ul>
+			<!-- <li><a href="javascript:;">我可以兑换的商品</a></li> -->
+           <li><a href="__SITE__/index/score/score">积分帮助</a></li>
+           <!--  <li><a href="javascript:;">等级规则</a></li> -->
+            <li class="current"><a href="javascript:;">兑换记录</a></li>
+            <li><a href="__SITE__/index/goods/shoppingAddress">收货地址</a></li>
+        </ul>
+    </div>
+
+	<div class="jf_con clearfix">
+		<h3 class="jf_subtitles1">兑换记录</h3>
+		<div class="jf_icanbuy_list_w">
+			<div class="wddd_c1">
+		<div class="wddd_t">
+			<span class="span1" style="width:100px">订单信息号</span>
+			<span class="span2" style="width:300px">商品名称</span>
+			<span class="span3">数量</span>
+			<span class="span4" style="width:180px">下单时间</span>
+			<span class="span5" style="width:100px">订单状态</span>
+		</div>
+		{foreach $orderList as $val}
+        <div class="wddd_t">
+			<span class="span1" style="width:100px">{$val->id}</span>
+			<span class="span2" style="width:300px">{$val->goods_name}</span>
+			<span class="span3">{$val->goods_num}</span>
+			<span class="span4" style="width:180px">{$val->create_time}</span>
+			<span class="span5" style="width:100px">{$val->status}</span>
+		</div>
+		{/foreach}
+	</div>
+		</div>
+
+
+
+
+
+		
+	</div>
+</div>
+<script>
+$(function(){
+	$(".goodsmore").toggle(function(){
+		$(this).parent().find(".goodsmore_con").slideDown();
+		$(this).html("收起 △");
+	},function(){
+		$(this).parent().find(".goodsmore_con").slideUp();
+		$(this).html("订单详情 ▽");
+	});
+});
+</script>
+</div>

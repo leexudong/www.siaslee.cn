@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=ie=7 http-equiv=x-ua-compatible>
+<style>
+    .pagination{list-style: none;}
+    .pagination li{display: inline-block;padding: 2px 8px}
+</style>
+<link rel="stylesheet" href="__STATIC__/admin/css/pintuer.css">
+<LINK rel=stylesheet type=text/css href="__STATIC__/admin/css/menu.css">
+<script type="text/javascript" src="__STATIC__/admin/js/jquery-1.11.3.min.js"></script>
+<META name=GENERATOR content="MSHTML 8.00.6001.19120"></HEAD>
+<BODY>
+  <div id="append_parent"></div>
+  <div class="container" id="cpcontainer">
+   
+    <div class="itemtitle"><h6>菜谱单</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="__SITE__/admin/cate/set" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$count} </strong>条菜谱
+        </th>
+      </tr>
+      <tr class="header">
+        <th></th>
+        <th>菜谱名字</th>
+        <th>成品图</th>
+        <th>难易程度</th>
+        <th>准备时间</th>
+        <th>烹饪时间</th>
+        <th>上传时间</th>
+        <!-- <th>作者名字</th> -->
+        <th></th>
+      </tr>
+
+     {foreach $list as $v}
+     <!-- 未被删除和未被放入回收站的菜谱 -->
+      <tr class="hover" style="text-align: center;">
+         <td class="td25">
+            <input type="checkbox" name="cidarray[]" value="{$v->id}" class="checkbox">
+         </td>
+        <td>
+            <input type="text" name="cateTitle[{$v->id}]" value="{$v->cate_title}" style="width:100px">
+        </td>
+        <td style="width:50px; height:50px; text-align: center;"><img src="{$v->final_pic}" style="width:50px; height:50px; " >
+        </td>
+        <td><input type="text" name="cateDiff[{$v->id}]" value="{$v->difficulty}" style="width:100px">
+        </td>
+
+        <td><input type="text" name="cookTime[{$v->id}]" value="{$v->ready_time}" style="width:50px">分钟
+        </td>
+
+        <td><input type="text" name="readyTime[{$v->id}]" value="{$v->cook_time}" style="width:50px">分钟
+        </td>
+        <td>{$v->create_time}</td>
+        <td>
+           <!--  {/$v->user->username} --> <!-- 作者名字 -->
+        </td>
+        <td><a href="javascript:;" cid="{$v->id}"  onclick="delTrue(this)">删除</a></td>
+        <td><a href="javascript:;" cid="{$v->id}" onclick="del(this)">放入回收站</a></td>
+      </tr>
+
+     {/foreach}
+      <tr>
+        <td colspan="15">
+          <div class="fixsel">
+            <input type="submit" class="btn" id="submit_submit" name="submit"  value="提交" />
+          </div>
+        </td>
+      </tr>
+      </table>
+    </form>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$page}
+    <!-- <ul class="postforum_page">
+    <li class="current"><span>{/$page}</span></li>
+    </ul> -->
+    <script type="text/javascript">
+        function delTrue(aobj)
+        {
+            var id = aobj.getAttribute('cid');
+            var oo='';
+            $.ajax({
+             type: "POST",
+             url: "__SITE__/admin/cate/delTrue",
+             data: {cid:id},
+             success: function(data,type){
+              eval('('+data+')');
+                obj = eval('('+data+')');
+               if(obj.status){
+                  window.location.href = '__SITE__/admin/index/cate';
+               }else{
+                alert(obj.msg);
+               }
+             }
+          });
+        }
+
+        //放入回收站
+         function del(aobj)
+        {
+            var id = aobj.getAttribute('cid');
+            var oo='';
+            $.ajax({
+             type: "POST",
+             url: "__SITE__/admin/cate/del",
+             data: {cid:id},
+             success: function(data,type){
+              eval('('+data+')');
+                obj = eval('('+data+')');
+               if(obj.status){
+                  window.location.href = '__SITE__/admin/index/cate';
+               }else{
+                alert(obj.msg);
+               }
+             }
+          });
+        }
+
+        //移出回收站
+       function move(tt)
+      {
+        var cid = tt.getAttribute('cid');
+          var oo = '';
+          //console.log(tt.parent());
+         $.ajax({
+              method: 'post',
+              url: "__SITE__/admin/cate/move",
+             
+              data: {
+                id:cid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                
+                 if(oo.status){   
+                  window.location.href = '__SITE__/admin/index/cate';
+                 }else{
+                  alert(oo.msg);
+                 }
+                  
+              }
+           });  
+     }
+
+    </script>
+    <hr>
+  <!-- 回收站内容 -->
+
+  <div class="itemtitle"><h6>菜谱回收站</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$deleteCount} </strong>条菜谱
+        </th>
+      </tr>
+     
+      <tr class="header">
+        <th></th>
+        <th>菜谱名字</th>
+        <th>成品图</th>
+        <th>难易程度</th>
+        <th>准备时间</th>
+        <th>烹饪时间</th>
+        <!-- <th>作者名字</th> -->
+        <th>上传时间</th>
+        <th></th>
+      </tr>
+     
+     {foreach $deleteCate as $v}
+     <tr class="hover">
+       <td></td>
+       <td>{$v->cate_title}</td>
+       <td><img src="{$v->final_pic}" style="width:50px;height:50px"></td>
+       <td>{$v->difficulty}</td>
+       <td>{$v->ready_time}分钟</td>
+       <td>{$v->cook_time}分钟</td>
+       <!-- <td>{/$v->user->username}</td> -->
+       <!-- <td>名字</td> -->
+       <td>{$v->create_time}</td>
+       <td><a href="javascript:;" onclick="move(this)" cid="{$v->id}">移出回收站</a></td>
+     </tr>
+     {/foreach}
+      </table>
+    </form>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$twopage}
+  </div>
+  <div style="height:100px;width:100%"></div>
+</BODY>
+</HTML>

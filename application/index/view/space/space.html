@@ -1,0 +1,112 @@
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1206px;">
+	<a href="#" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix"><div class="main clearfix">
+	<h1 class="bbtitles">欢迎来到我的美食空间</h1>
+	<div class="userheader">
+		<div class="avatar_w">
+			<a href="javascript:;"><img src="{$photo}"></a>
+		</div>
+		<div class="userh_main">
+			<div class="info1">
+				<h1>{$userInfo['username']}
+				<a target="_blank" title="新人" href="javascript:;" class="user_level normal_level_1"></a>
+				</h1>
+				<span class="info">
+					<em><a href="javascript:;">积分：{$userInfo['score']}</a></em> 
+					<br>
+					
+					<em>20{$userInfo['create_time']|date="y-m-d",###}加入美食杰</em>
+					{if $userInfo['id'] == $uid} 
+					| <em><a href="__SITE__/index/space/personInfo">编辑个人资料</a></em>
+					{/if}
+				</span>
+				<!-- <div class="tools">
+					<a class="mail" href="http://i.meishi.cc/inbox_list.php">我的私信</a>
+				</div> -->
+			</div>
+		</div>
+
+		<div class="user_userinfo">
+			<ul class="clearfix">
+				<!-- <li class="li1">
+					<a href="javascript:;"><span>关注</span><strong>1</strong></a>
+				</li>
+				<li class="li2"><a href="javascript:;">
+					<span>粉丝</span><strong>0</strong></a>
+				</li> -->
+				<li class="li3">
+					<a href="__SITE__/index/create/create"><span>发布菜谱</span><strong>{$userInfo['cate_num']}</strong></a>
+				</li>
+				<!-- <li class="li4">	
+					<a href="javascript:;"><span>体质</span><strong>阴虚质</strong></a>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+
+	<style>
+		.dryrw_btn{display: inline-block;vertical-align: top;height: 22px;padding: 0px 12px;background: #ff3232;  ext-align: center;color: #fff;line-height: 22px;}
+		.dryrw_btn:hover{background:#e80000;}
+	</style>
+
+	<div class="user_nav">
+		<ul>
+			<li class="current"><a href="__SITE__/index/space/space/user_id/{$userInfo['id']}">我的作品</a></li>
+			
+			<li><a href="__SITE__/index/space/collect/user_id/{$userInfo['id']}">收藏</a></li>
+			
+						
+		</ul>
+	</div>
+	<div class="user_main clearfix">
+		<div class="user_inner_tab">
+			<ul class="user_inner_tab_ul">
+				<li>
+					<a href="__SITE__/index/space/space/user_id/{$userInfo['id']}" class="current link">我的菜谱</a>
+				</li>
+			</ul>
+			<a target="_blank" href="__SITE__/index/create/create" class="user_inner_tab_btn" id="creatnewcd">+ 发布菜谱</a>            
+			
+		</div>
+		{foreach $cate as $value}
+		<div class="listtyle_cd1 clearfix">
+			<div class="user_cditem clearfix">
+				<div class="l">
+					<div class="time"><span>{$value['update_time']|date="20y年m月",###}</span><strong>{$value['update_time']|date="d",###}</strong></div>
+				</div>
+				<div class="zp_r">
+					<div class="userzp_zp userzp_zp_370">
+						<div class="imgw">
+							<a target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$value['user_id']}/cate_id/{$value['id']}" class="img">
+								<img src="{$value['final_pic']}">
+							</a>
+							
+							
+							{if $userInfo->id == $uid}
+							<span class="delthis" >
+								<a href="__SITE__/index/edit/edit/cate_id/{$value['id']}" class="edit">编辑</a> | <a href="__SITE__/index/mylist/del/cate_id/{$value['id']}" class="delete">删除</a>
+							</span>
+							{/if}
+
+						</div>
+						<a class="name" target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$value['user_id']}/cate_id/{$value['id']}">{$value['cate_title']}</a>
+						<span class="span2">{$value['hits']}浏览　{$value['comment_num']}评论</span>
+						<a target="_blank" href="__SITE__/index/catedetails/catedetails/user_id/{$value['user_id']}/cate_id/{$value['id']}" class="link">查看原菜谱 &gt;</a>
+						<p class="p1">{$value['story']}</p>
+					</div>			
+				</div>
+			</div>
+		</div>
+		{/foreach}
+		 <div class="listtyle1_page">
+            <div class="listtyle1_page_w">
+             <ul>
+                <li style="float:left;"><span>{$page}</span></li>
+            </ul>
+        </div>
+	</div>
+
+</div>
+</div>

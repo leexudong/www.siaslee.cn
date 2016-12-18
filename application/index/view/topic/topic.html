@@ -1,0 +1,220 @@
+﻿
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+<link rel="stylesheet" type="text/css" media="all" href="__STATIC__/index/css/forum.css"/>
+<script type="text/javascript" src="__STATIC__/index/js/forum.js">
+</script>
+<script type="text/javascript" src="__STATIC__/index/js/jquery.sochange-min.js">
+</script>
+<div class="main">
+	<h3 class="bbtitles">有人的地方才有力量</h3>
+	<div class="navstyle1">
+<ul>
+	
+	<!-- <li><a href="__SITE__/index/topic/tableTime/topicblock/1">餐桌时光</a></li> -->
+	<li><a href="__SITE__/index/topic/palyBake/topicblock/2">玩转烘焙</a></li>
+	<li><a href="__SITE__/index/topic/cateClass/topicblock/3">美食课堂</a></li>
+	
+</ul>
+<div class="navstyle1_search">
+<form action="__SITE__/index/topic/search" method="post">
+<input name="words" type="text" placeholder="搜索话题" class="text" />
+<input type="submit" class="submit" />
+</form>
+</div>
+</div>
+<div class="forum_main clearfix">
+<div class="forum_left">
+<div class="focusimg_w1">
+<ul class="forum_index_focusimg" id="forum_index_focusimg">
+	<li style="display: none;"><a target="_blank" href="javascript:;"><img
+		alt="人气夏日冰品菜谱征集令" width="300" height="400"
+		src="__STATIC__/index/images/9d88525113e9e9e5fe71303064ba7fa7.jpg">
+	<dl>
+		<dt>人气夏日冰品菜谱征集令</dt>
+		<dd>打败我的不是我天真，而是天真热</dd>
+	</dl>
+	</a>
+	</li>
+	<li style="display: none;"><a target="_blank" href="javascript:;"><img
+		alt="家庭自制奶酪秘笈大公开" width="300" height="400"
+		src="__STATIC__/index/images/6f0b1a2a2fcb6f5c039880edbf5b285b.jpg">
+	<dl>
+		<dt>家庭自制奶酪秘笈大公开</dt>
+		<dd>《我爱奶酪》家庭自制奶酪圣经免费送</dd>
+	</dl>
+	</a>
+	</li>
+	<li style="display: none;"><a target="_blank" href="javascript:;"><img
+		alt="有它，烘焙的大门说开就开" width="300" height="400"
+		src="__STATIC__/index/images/1ddcf24af4ad0b6fa51e595864470858.jpg">
+	<dl>
+		<dt>有它，烘焙的大门说开就开</dt>
+		<dd>《饼干研究室》烘焙好书免费送送送</dd>
+	</dl>
+	</a>
+	</li>
+	<li style="display: none;"><a target="_blank" href="javascript:;"><img
+		alt="不“变态”怎能成就美味" width="300" height="400"
+		src="__STATIC__/index/images/88080455cda54207f68541b1161b6660.jpg">
+	<dl>
+		<dt>不“变态”怎能成就美味</dt>
+		<dd>美味『地下变态茎』大盘点</dd>
+	</dl>
+	</a>
+	</li>
+	<li style="display: none;"><a target="_blank" href="javascript:;"><img
+		alt="让妈妈和宝宝都能在这个夏天收获爱与健康~" width="300" height="400"
+		src="__STATIC__/index/images/d95a338c087ab63797c7589ce202383e.jpg">
+	<dl>
+		<dt>让妈妈和宝宝都能在这个夏天收获爱与健康~</dt>
+		<dd>各位美食达人们，快来奉献你们的独家秘方，制作健康美味~</dd>
+	</dl>
+	</a>
+	</li>
+	<li style="display: none;"><a target="_blank" href="javascript:;"><img
+		alt="妈妈们又要为宝宝的健康挖空心思啦！" width="300" height="400"
+		src="__STATIC__/index/images/b647985f48ca4eb6dfad221b340ed1f9.jpg">
+	<dl>
+		<dt>妈妈们又要为宝宝的健康挖空心思啦！</dt>
+		<dd>快来传授独门秘籍~ 让妈妈们不再为下厨烦恼， 让宝宝们能够茁壮成长~</dd>
+	</dl>
+	</a>
+	</li>
+</ul>
+<ul class="forum_index_focusimg_num" id="forum_index_focusimg_num">
+	<li><a href="javascript:void(0)" class=""></a></li>
+	<li><a href="javascript:void(0)" class=""></a></li>
+	<li><a href="javascript:void(0)" class=""></a></li>
+	<li><a href="javascript:void(0)" class=""></a></li>
+	<li><a href="javascript:void(0)" class=""></a></li>
+	<li><a href="javascript:void(0)" class=""></a></li>
+</ul>
+</div><div class="forumlist_style1">
+<h2 class="forumlist_titles_style1"><em></em>推荐话题</h2>
+<ul class="forumlist_ul_style1">
+	{foreach $list as $v}
+	<li class="clearfix">
+		<div class="num">
+			<span>{$v->hits}<br />浏览</span>
+		</div>
+		<div class="c">
+		<h3>
+			<a target="_blank" href="__SITE__/index/TopicComment/TopicComment/tid/{$v->id}">{$v->title}
+			</a>
+		</h3>
+		<p>
+			<a target="_blank" href="__SITE__/index/TopicComment/TopicComment/tid/{$v->id}">{$v->content}
+			</a>
+		</p>
+		<div class="info">
+			<span>发帖人：<a target="_blank" href="__SITE__/index/space/space
+/uid/{$v->user->id}">{$v->user->username}</a>
+			</span>
+			<!-- <span>最后回复：<a href="http://i.meishi.cc/cook.php?id=8934567">杰米</a></span> -->
+			<span>发布时间：{$v->create_time}</span>
+		</div>
+		</div>
+	</li>
+	{/foreach}
+</ul>
+</div>
+</div>
+<div class="forum_right"><a target="_blank" href="__SITE__/index/topic/publishTopic" class="newpost_btn_index">发布新帖</a>
+
+	<div class="forum_right_style5">
+		<dl>
+
+			<dt class="forum_right_dt">积分排行榜</dt>
+
+			{foreach $userlist as $v}		
+				<dd>
+					{if $i==1}
+					<em class="rank rank1">{$i++}</em>
+					{elseif $i==2}
+					<em class="rank rank2">{$i++}</em>
+					{elseif $i==3}
+					<em class="rank rank3">{$i++}</em>
+					{else}
+					<em class="rank">{$i++}</em>
+					{/if}
+					<a href="__SITE__/index/space/space/user_id/{$v->id}" class="img" class="img">
+						<img src="{$v->photo}" />
+					</a>
+					<div class="c">
+					<h4>
+						<a href="__SITE__/index/space/space/user_id/{$v->id}">{$v->username}</a>
+					</h4>
+					<span>{$v->score}分</span>
+					</div>
+				</dd>
+			{/foreach}		
+			
+			
+        </dl>					
+	</div>
+
+<div class="forum_right_style2">
+<dl>
+
+<dt class="forum_right_dt">发帖达人 
+	<em class="fortab" tab = "1">本月</em>
+	<em class="fortab" tab = "2">本周</em>
+	<em class="fortab current" tab = "3">今日</em>
+</dt>
+		{foreach $darenMonth as $value}
+		<dd class="dd1" style="display:none;">
+			<a href="__SITE__/index/space/space/user_id/{$value['id']}" class="img" class="img"><img src="{$value['photo']}" /></a>
+			<div class="c">
+			<h4>
+				<a href="__SITE__/index/space/space/user_id/{$value['id']}">{$value['username']}</a>
+								
+			</h4>
+			<a target="_blank" href="__SITE__/index/topic/allTopic/uid/{$value['id']}"><span>本月发帖：{$value['count']}</span></a></div>
+			<!-- <a class="followTa" uid="{$value['id']}" onclick="focus(this)"></a> -->
+		</dd>
+		{/foreach}
+		{foreach $darenWeek as $value}
+		<dd class="dd2" style="display:none;">
+			<a href="__SITE__/index/space/space/user_id/{$value['id']}" class="img" class="img"><img src="{$value['photo']}" /></a>
+			<div class="c">
+			<h4>
+				<a href="__SITE__/index/space/space/user_id/{$value['id']}">{$value['username']}</a>
+								
+			</h4>
+			<a target="_blank" href="__SITE__/index/topic/allTopic/uid/{$value['id']}"><span>本周发帖：{$value['count']}</span></a>
+			</div>
+			<!-- <a class="followTa"  uid="{$value['id']}" onclick="focus(this)"></a> -->
+		</dd>
+		{/foreach}
+		{foreach $darenDay as $value}
+		<dd class="dd3" style="display:none;">
+			<a href="__SITE__/index/space/space/user_id/{$value['id']}" class="img" class="img"><img src="{$value['photo']}" /></a>
+			<div class="c">
+			<h4>
+				<a href="__SITE__/index/space/space/user_id/{$value['id']}">{$value['username']}</a>
+								
+			</h4>
+			<a target="_blank" href="__SITE__/index/topic/allTopic/uid/{$value['id']}"><span>今日发帖：{$value['count']}</span></a></div>
+			<!-- <a class="followTa"  uid="{/$value['id']}" onclick="focus(this)"></a> -->
+			<!-- <a href="javascript:focus(this);" uid="{、$value['id']}">
+				<strong>关注</strong>
+			</a> -->
+		</dd>
+		{/foreach}
+</dl>
+</div>
+<script type="text/javascript">
+	function focus(aobj)
+	{	
+		var a = aobj.getAttribute('uid');
+		//alert(111);
+		console.log(a);
+	}
+</script>
+</div>
+</div> <!--  forum_main clearfix 结束-->
+</div>   <!-- classname为main的部分结束 -->
+
+</div>  <!-- classname为main_w clearfix部分结束 -->

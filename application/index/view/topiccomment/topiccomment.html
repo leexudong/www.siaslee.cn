@@ -1,0 +1,177 @@
+﻿
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#" class="backtotop pngFix">回到顶部</a></div><div class="main_w clearfix"><div class="main">
+<!-- post_from:web -->
+<ul class="pathstlye1">
+	{foreach $list as $value}
+	<li><a href="__SITE__/index/topic/topic">讨论区</a></li>
+	<li>></li>
+	<!-- {if $value->topicblock_id ==1 }
+	<li><a href="http://www.goodeat.com/index/topic/tableTime/topicblock/1">餐桌时光</a></li> -->
+	{if $value->topicblock_id==2}
+	<li><a href="__SITE__/index/topic/palyBake/topicblock/2">玩转烘焙</a></li>
+	{else}
+	<li><a href="__SITE__/index/topic/cateClass/topicblock/3">美食课堂</a></li>
+	{/if}
+	<li>></li>
+	<li>{$value->title}</li>
+	{/foreach}
+</ul>
+<div class="forum_main clearfix">
+<!-- <div class="forumpagestlye2"><a href="javascript:history.go(-1);" class="backtoforum_btn">返回</a> -->
+<a class="postforum_btn ml0" >回复话题</a>
+<ul class="postforum_page">
+	<li class="current"><span>{$commentListPage}</span></li></ul>
+</div>
+<ul class="postitem_ul">
+	{foreach $list as $v}
+	<li class="postitem_li clearfix" id="post_1655605">
+	<div class="left">
+		<strong class="username">
+			<a href="__SITE__/index/space/space/user_id/{$v->user->id}">{$v->user->username}</a>
+			<a target="_blank" class="v_small mt13" href="#" title="达人" _hover-ignore="1"></a>
+						
+		</strong> 
+		<a href="__SITE__/index/space/space/user_id/{$v->user->id}" class="avatar">
+		<div class="lzcorner"></div><img src="{$v->user->photo}" /></a>
+	<!-- 	<div class="btn">
+	<a class="followTa fl" href="####" uid="113291"></a>
+	<a onclick="send_sixin(113291)" href="javascript:void(0);" class="messageBtn mr10 fl">发私信</a>
+	</div> -->
+		<div class="info clearfix"><span>发帖 {$v->user->topic_num}</span>
+		</div>
+	</div>
+	<div class="right">
+	<div class="bar">
+		<span>发表于 {$v->create_time}</span>
+		<span>最后修改  {$v->update_time}</span>
+			 
+		<a href="__SITE__/index/space/space/user_id/{$v->user->id}">只看该作者</a>
+		<em>楼主</em>
+        </div>
+    
+    
+	<div class="con">
+		
+
+
+<div style="text-align:center;">
+	<span style="line-height: 1.5; font-family: 'Microsoft YaHei'; font-size: 16px;" font-size:16px;"=""><strong>{$v->title}</strong></span> 
+</div>
+<p style="text-align:center;">
+	<span style="line-height: 1.5; font-family: 'Microsoft YaHei';" font-size:16px;"=""></span> 
+</p>
+<p style="text-align:center;">
+	<span style="line-height: 1.5; font-family: 'Microsoft YaHei';" font-size:16px;"="">{$v->content}</span> 
+</p>
+
+<div style="text-align:center;">
+	<br />
+</div>   
+	<!-- 分享  -->   
+ <div class="sharebox_w">
+            <div class="sharebox">
+                <div class="bdsharebuttonbox">
+                    <a href="#" class="bds_more" data-cmd="more"></a>
+                    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                </div>
+            </div>
+  	</div>  <!-- 分享结束 -->
+	        
+	</div>
+	</div>
+	</li>   <!-- wang遍历话题内容结束 -->
+	{/foreach}
+	
+	<!-- 该话题下的评论和评论者的id -->
+	{foreach $commentList as $v}
+	<li class="postitem_li clearfix" id="post_1655726">
+	<div class="left">
+		<strong class="username">
+			<a href="__SITE__/index/space/space/user_id/{$v->users->id}">{$v->users->username}</a>
+			<a target="_blank" class="v_small mt13" href="__SITE__/index/space/space/user_id/{$v->users->id}" title="达人" _hover-ignore="1"></a>
+						
+		</strong> 
+		<a href="__SITE__/index/space/space/user_id/{$v->users->id}" class="avatar"><img src="{$v->users->photo}" /></a>
+		<!-- <div class="btn"><a class="followTa fl" href="####" uid="3484135"></a><a onclick="send_sixin(3484135)" href="javascript:void(0);" class="messageBtn mr10 fl">发私信</a>
+		</div> -->
+		<div class="info clearfix"><span>发帖 {$v->users->topic_num}</span> 
+		<!-- <span>关注 {/$v->users->focus_num}</span> 
+		<span>粉丝 {/$v->users->fans_num}</span>  -->
+		<!-- <span>注册 {/$v->users->create_time}</span> -->
+		</div>
+	</div>
+	<div class="right">
+	<div class="bar"><span>发表于 {$v->create_time}</span>
+			 
+		<a href="__SITE__/index/space/space/user_id/{$v->users->id}">只看该作者</a>
+		
+		<span style="display:none">{$i++}</span>
+		{if $i==1}
+			<em>沙发</em>
+		{elseif $i==2}
+			<em>板凳</em>
+		{elseif $i==3}
+			<em>坐垫</em>
+		{else}
+			<em>陆地</em>
+		{/if}
+		
+		
+     </div>
+    
+    
+	<div class="con">
+		{$v->content}        
+		<div class="addjf_box_w">
+        </div>
+	</div>
+	
+	</div>
+	</li>
+	{/foreach}
+	<!-- 评论者信息结束 -->
+					
+</ul>
+<div class="forumpagestlye2"><!-- <a href="javascript:history.go(-1);" class="backtoforum_btn">返回</a> -->
+<a class="postforum_btn ml0">回复话题</a>
+<ul class="postforum_page">
+	<li class="current"><span>{$commentListPage}</span></li>
+</ul>
+
+</div>
+<div class="fastRe" id="fastRe">
+{if empty($user)}
+	<div class="user"><strong class="username">
+		<a target="_blank" href="__SITE__/index/space/space/user_id/{$user['id']}">{$user['username']}</a></strong> 
+		<a target="_blank" href="__SITE__/index/space/space/user_id/{$user['id']}" class="avatar">
+		<img src="__STATIC__/index/images/n_default.png" /></a>
+	</div>
+{else}
+	
+	<div class="user"><strong class="username">
+		<a target="_blank" href="__SITE__/index/space/space/user_id/{$user['id']}">{$user['username']}</a></strong> 
+		<a target="_blank" href="__SITE__/index/space/space/user_id/{$user['id']}" class="avatar">
+		<img src="{$user['photo']}" /></a>
+	</div>
+	
+{/if}
+<div class="forform">
+{foreach $list as $value}
+<form action="__SITE__/index/topiccomment/add/tid/{$value->id}" method="post">
+<textarea id="saytext" name='_content'></textarea>
+<!-- <textarea name="content" class='ckeditor' id='textarea' ></textarea> -->
+<!-- input name='uid' type="hidden" value="{/$v->user->id}"></input>
+<input name='tid' type="hidden" value="{/$v->id}"></input> -->
+<input	type="submit" class="submit" value="回 复" />
+</form>
+{/foreach}
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>

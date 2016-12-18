@@ -1,0 +1,267 @@
+
+<div class="main_nav_sub_w">
+    <div class="main_nav_sub_ww">
+
+    <ul class="main_nav_sub">
+<li class="current"><a href="__SITE__/index/goods/goods" class="link pngFix"><strong>产品首页</strong></a></li>
+
+<li><a href="__SITE__/index/score/score" class="link pngFix"><strong>我的积分</strong></a></li>
+
+<li><a href="__SITE__/index/goods/order" class="link pngFix"><strong>我的订单</strong></a></li>
+	</ul>
+
+        </div>
+</div>
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#" class="backtotop pngFix">回到顶部</a></div><div class="main_w clearfix"><div class="main clearfix">
+	<div class="jjg_path"><a href="__SITE__/index/goods/goods">家居馆</a> > <a href="__SITE__/index/goods/goods">{$bigBlock_name}</a> > <a href="__SITE__/index/goods/goodstype/tid/{$tid}">{$smallBlock_name}</a> > <a href="javascript:;">{$goodsName}</a></div>
+	<div class="jjg_goodsinfo">
+		<div class="jjg_goodsinfo_left">
+			<div class="goodsinfo_imgbox" id="goodsinfo_imgbox">
+				<ul class="goodsinfo_imgbox_ul clearfix" id="goodsinfo_imgbox_ul">
+					<li style="display:list-item;"><a href="javascript:void(0)"><img src="{$show1}"></a></li>
+					<li style="display:none;"><a href="javascript:void(0)">
+					<img src="{$show2}"></a></li>
+					<li style="display:none;"><a href="javascript:void(0)">
+					<img src="{$show3}"></a></li>
+					<li style="display:none;"><a href="javascript:void(0)">
+					<img src="{$show4}"></a></li>
+				</ul>
+				<ul class="goodsinfo_imgbox_num" id="goodsinfo_num_ul">
+					<li><a href="javascript:void(0)"><img src="{$show1}"></a></li>
+					<li><a href="javascript:void(0)"><img src="{$show2}"></a></li>
+					<li><a href="javascript:void(0)"><img src="{$show3}"></a></li>
+					<li><a href="javascript:void(0)"><img src="{$show4}"></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="jjg_goodsinfo_right">
+			<h1>{$goodsName}</h1>
+			            <div class="buy_con">
+				<form action="__SITE__/index/goods/buy/gid/{$goodsId}" id="orderform" name="orderform" method="post" onSubmit="javascript:return orderforms();">
+					<div class="buycon_tab" id="buycon_tab">
+					<span  fortab = "1" class="current">积分兑换</span>
+					
+					</div>
+					<div class="buycon_tab_ buycon_tab1" >
+						<ul class="clearfix">
+							<li>兑换积分：<strong class="price  " id="goodspriceincon">{$price}</strong></li>
+					
+							　　<li>已兑换：{$sold_num}</li>
+							<li>我要兑换<input type="text" name="amount"  class="buy_bum text" >件  （库存{$stock}件）</li>
+                    
+                        </ul>
+						<div class="buycontab1_btns">
+					<!--<span class="unable" id="sy_unable_bbtn">马上兑换</span>--><input type="submit" class="bigbtn" id="sy_bbtns" value="马上兑换">
+										
+					</div>
+					</div>
+		
+				</form>
+			</div>
+<div id="share">
+			<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+			</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</div>  <!-- share end -->
+		</div>
+	</div>
+
+
+	<div class="jjg_goodscon clearfix" >
+		
+
+		<div class="jjg_goodscon">
+			<div class="jjg_goodscon_left">
+			
+							<div class="jjg_goodscon_l_list">
+					<strong class="t">猜你喜欢</strong>
+					{foreach $twoList as $val}
+					<div class="jjg_goodscon_l_listitem">
+						<a href="__SITE__/index/goods/detailGoods/gid/{$val->id}" class="img">
+						<img src="{$val->show1}"></a>
+						<a href="__SITE__/index/goods/detailGoods/gid/{$val->id}" class="link">{$val->goods_name}</a>
+						<span class="jf">{$val->price}积分 </span>
+					</div>
+					{/foreach}
+					
+									
+				</div>
+			
+			</div>
+			<div class="jjg_goodscon_right">	
+				<div class="jjg_goodscon_right_item">			
+					<div class="jjg_goodscon_right_maintab">
+						<span class="current" tab="tt1">产品介绍</span>
+						<!-- <span class="" tab="tt2">电饭锅菜谱推荐</span>
+						<span class="" tab="tt3">晒单（5）</span> -->
+					</div>
+				<div class="jjg_goodscon_right_maintab1_con" id="jjg_c_ctab_1c" fortab="tt1">
+				<div class="jjg_goods_content">						
+						<p>
+						<img src="{$detail_pic}" align="absmiddle" />
+	
+						</p>	
+				</div>				
+				</div>
+		
+				
+					
+				<div class="jjg_goodscon_right_maintab1_con" fortab="tt3" id="shaidanlist" style="display:none;">
+				</div>
+				
+				</div>
+			
+				<div class="jjg_goodscon_right_item">
+					<div class="jjg_goodscon_right_maintab">
+						<span class="current" tab="t6">兑换须知</span>
+					</div>
+
+					<div class="jjg_goods_content">
+						<p style="line-height:22px;color:#666;font-size:12px;padding:14px 14px;"><br/>
+1、兑换商品的均以快递方式邮寄，邮费由美食杰承担，邮寄地区仅限中国大陆，西藏、新疆、甘肃、港澳台等偏远地区不包邮。<br/>
+2、兑换成功后的订单不可取消，商品图片仅供参考，款式、颜色请以实物为准。<br/>
+3、除商品在运送途中发生损毁或本身存在质量瑕疵以外，恕不接受退货或换货。若遇商品本身质量问题，请于三日内拍照并反馈给美食小编。<br/>
+4、所兑换商品均不提供发票，因兑换礼品而发生的相应所得税均由用户自行申报和承担。<br/>
+5、美食杰保留最终解释权，并有权根据需要取消或增删、修订规则。</p>	
+					</div>
+
+				</div>
+				
+
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<script type="text/javascript">
+$(function(){
+	$('#shaidanlist').load('/ajax/try/do.php?dotype=shaidanlist&goodsid=3010&page=1');
+	$("#drzx_tip").hover(function(){
+		$(this).addClass("drzx_tip_cur");
+	},function(){
+		$(this).removeClass("drzx_tip_cur");
+	});
+
+
+	$("#tqtd_btn").click(function(){
+		var id=0;
+		if(id==0){
+			window.location.href="http://i.meishi.cc/login.php?redirect="+self.location.href;
+			return false;
+		}else{
+			Alert("美食杰特权购买通道", "iframe:goods_card.php?id=3010", "700", "400", "false", "", "true", "img");
+		}
+	});
+	
+
+	$("#buycon_tab span").click(function(){
+		var ft = $(this).attr("fortab");
+		$(".buycon_tab_").hide();
+		$(".buycon_tab"+ ft).show();
+		$(this).siblings().removeClass("current");
+		$(this).addClass("current");
+	});
+
+	$("#tqtd_btn1").click(function(){
+		$("#buycon_tab span[fortab = '2']").click();
+	});
+
+	$("#sy_bbtns1").click(function(){
+		$("#buycon_tab span[fortab = '1']").click();
+	});	
+	
+	
+  $('#pinglunlist').load('/ajax/try/do.php?dotype=pinglunlist&goodsid=3010&page=1');
+	
+	
+	$("#submit").click(function(){
+		var goods_title ='SUPOR/苏泊尔 CFXB40FC832-75智能球釜电饭煲4L  3-4人';
+		var content =$("#content").val();
+		var goods_id=$("#goods_id").val();
+		var userid  =$("#userid").val();
+		var username=$("#username").val();
+		//var url='';
+		if(userid==0){
+			$('#cmsg').html("请先登录！");
+			return false;
+		}
+		if(content==''){
+			$('#cmsg').html("内容不能为空！");
+			return false;
+		}
+		$.post("/ajax/try/do.php?dotype=pinglun",{
+			 goods_title:goods_title,
+			 content:content,
+			 goods_id:goods_id,
+			 userid:userid,
+			 username:username
+			// url:url
+		},
+		function(data,status){
+			if(data=='ok'){
+				$('#cmsg').html("发布成功，暂待审核！");
+				$("#content").val('');
+			}else{
+				return false;
+			}
+		});
+  });
+
+	$(".tmall").click(function(){
+		var pid = '3010';
+		if (pid > 1000) {
+			$.post("/ajax/tmall_click.php",{
+				 pid:pid,
+			},
+			function(data,status){
+				//alert(data);
+			});
+		}
+	});	  
+
+});
+function orderforms(nscore,jifen){
+		var amount=parseInt($("#amount").val());
+		if(amount<1){
+			Alert("提示", "text:兑换的商品数量有误", "300", "80", "false", "", "true", "img");
+			return false;
+		}
+
+		var nscore=19200*amount;
+		var jifen=no;
+		if(jifen=='no'){
+			window.location.href="http://i.meishi.cc/login.php";
+			return false;
+		}
+		if(nscore<=jifen){
+			return true;
+		}else{
+			Alert("提示", "text:您的当前积分不足以兑换对应的商品数量！", "300", "80", "false", "", "true", "img");
+			return false;
+		}
+}
+
+
+	$("#amount").keydown(function(){
+  		var amount= $(this).val();  		
+		var reNum =/^[0-9]+$/;
+		if(!reNum.test(amount)){		
+			$(this).val('1')
+		}
+	});
+	$("#amount").keyup(function(){
+  		var amount= $(this).val();  		
+		var reNum =/^[0-9]+$/;
+		if(!reNum.test(amount)){		
+			$(this).val('1')
+		}
+	});
+
+
+</script>
+<div style="display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253497208'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/stat.php%3Fid%3D1253497208' type='text/javascript'%3E%3C/script%3E"));</script></div>
+</div>

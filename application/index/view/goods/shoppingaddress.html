@@ -1,0 +1,148 @@
+
+<div class="main_nav_sub_w">
+    <div class="main_nav_sub_ww">
+
+    <ul class="main_nav_sub">
+<li class="current"><a href="__SITE__/index/goods/goods" class="link pngFix"><strong>产品首页</strong></a></li>
+
+<li><a href="__SITE__/index/score/score" class="link pngFix"><strong>我的积分</strong></a></li>
+
+<li><a href="__SITE__/index/goods/order" class="link pngFix"><strong>我的订单</strong></a></li>
+	</ul>
+
+    </div>
+</div>
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1126px; display: none; bottom: 20px;"><a href="javascript:;" class="backtotop pngFix">回到顶部</a></div><div class="main_w clearfix">
+
+
+<div class="main">
+<div class="jf_my">
+		<a href="__SITE__/index/space/space/user_id/{$defaultData['id']}" class="jf_myavatar"><img src="{$defaultData['photo']}"></a>
+		<div class="jf_myinfo">
+			<div class="jf_username">  {$defaultData['username']}         
+			 <!-- <a href="javascript:void(0);" onclick="jifenpage_sign_in(1);" class="qdbtn">签到</a> -->
+            </div>
+
+			<!-- <div class="jf_desss">普通会员LV1 ：新人</div>
+			
+			            <div class="jf_jfhz1 jf_jfhz1_user1_2">
+			                <span class="s1"></span><span class="b"><em style="width:12px;"></em></span><span class="s2"></span>
+			            </div> -->
+            
+
+			<div class="jf_jfhz">{$defaultData['score']}<em>积分</em>
+			<!-- <a href="http://i.meishi.cc/jifen/guize.php">如何获取积分？</a> -->
+			</div>
+		</div>
+
+
+		
+	</div>
+    
+	<div class="jifen_nav1">
+		<ul>
+			<!-- <li><a href="javascript:;">我可以兑换的商品</a></li> -->
+            
+            <li><a href="__SITE__/index/goods/order">兑换记录</a></li>
+            <li class="current"><a href="javascript:;">收货地址</a>
+            </li>
+        </ul>
+    </div>
+	<div class="jf_con clearfix">
+		<h3 class="jf_subtitles1">收货地址</h3>
+		<div class="jf_icanbuy_list_w">
+	<div class="jf_levelrule_w">
+	<div class="addr_list1">
+					
+
+		<div class="add_new_add_box1" id="add_new_add_box" style=" display:block">
+			
+			<form method="POST" action="__SITE__/index/goods/doAddress"  >
+				<!-- <input type="hidden" value="add" name="action">
+				                <input type="hidden" value="0" name="aid"> -->
+                <dl class="clearfix">
+					<dt>省份：</dt>
+						<dd>
+							<input type="text" name="home_province" class="text zoneid" placeholder="请输入省份">
+                            
+						</dd>
+					<dt>地区：</dt>
+					<dd>
+						<input type="text" name="home_city" class="text zoneid" placeholder="请输入地区" >
+					</dd>
+					
+					<dt>街道地址：</dt>
+						<dd class="h">
+						<!-- <textarea name="addressdetail">
+						</textarea> -->
+						<input type="text" class="text mp"  name="addressdetail">
+						</dd>
+                    <dt>收货人姓名*：</dt>
+	                    <dd class="dd1">
+	                    <input type="text" class="text" value="{$defaultData['username']}" name="user_name" placeholder="长度不超过25个字">
+	                    </dd>
+
+					<dt>手机号码：</dt>
+					<dd><input type="text" class="text mp" name="mobile" value="{$defaultData['phone']}" placeholder="手机号码"></dd>
+
+					<dt> </dt>
+					<dd>
+					<input type="submit" class="submit" value="确认收货地址" >
+					</dd>
+				</dl>
+			</form>
+		</div>
+				
+	</div>
+				<script>
+$(function(){
+	$("#add_new_address").toggle(function(){
+		$("#add_new_add_box").slideDown();
+	},function(){
+		$("#add_new_add_box").slideUp();
+	});
+
+	$(".settomoren").live("click",function(){
+		var _this = $(this);
+		$.post("/account/address.php",{id:_this.attr('id'),ac:"moren"},function(data,status){
+			$(".morenaddbtn").addClass("settomoren").html("设为默认地址");
+			_this.removeClass("settomoren").html("默认收货地址");
+			alert("地址更换成功！");
+		});
+	});
+
+
+	$(".deladd").live("click",function(){
+		var _this = $(this);
+		if (confirm("确认要删除？")) {
+			$.post("/account/address.php",{idd:_this.attr('idd'),ac:"del"},function(data,status){
+				alert("删除成功！");
+				window.location.reload();
+			});
+		}
+	});
+$('#home_province').change(function(e){
+		if($.trim(this.value) != 0)
+		$.get('/ajax/get_city.php?pid='+this.value+'&city_id=',function(h){$('#home_city').html(h);
+		})
+	}).change();
+
+});
+function save_address(){
+	$("#save_address").ajaxSubmit(function(message) {
+		var result_obj = eval('(' + message + ')');
+		if(result_obj.code > 0){
+			alert(result_obj.msg);
+			window.location.reload("http://i.meishi.cc/account/address.php");
+		}else{
+			alert(result_obj.msg);
+		}
+	});
+	return false;
+}
+</script>
+		</div>
+		</div>
+	</div>
+</div></div>

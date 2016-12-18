@@ -1,0 +1,54 @@
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1126px; display: none;"><a href="#" class="backtotop pngFix">回到顶部</a></div>
+<div class="main_w clearfix">
+
+
+<div class="main">
+<h3 class="bbtitles">{$username} 的话题</h3>
+<div class="navstyle1 mb0">
+<!-- <ul>
+	<li><span class="searchr">搜索"{/$words}"的结果：</span></li>
+</ul> -->
+<!-- <div class="navstyle1_search">
+<form action="http://i.meishi.cc/discussion/search.php" method="get"><input name="words" placeholder="搜索话题" class="text" type="text"><input class="submit" type="submit"></form>
+</div> -->
+</div>
+<div class="forum_main clearfix">
+	<div class="forumlist_style3">
+<div class="forumlist_style2_toolbar forumlist_style3_toolbar">
+<div class="postskind postskind1">查看主题
+<dl id="chosepostskind">
+	<dt>全部主题</dt>
+</dl>
+</div>
+<div class="re_and_view">回复/查看</div>
+<div class="author">作者</div>
+</div>
+<div class="forumlist_style2_list forumlist_style3_list">
+<ul>	
+		{foreach $list as $val}
+			<li class="clearfix">
+			<div class="div1"><em class="img"></em></div>
+			<div class="div2">
+			<h3><a target="_blank" href="__SITE__/index/topicComment/topicComment/tid/{$val->id}">
+			<span>{$val->title}</span>
+			</a>
+			</h3>
+			</div>
+			<div class="div3"><strong>{$val->comment_num}</strong><em>{$val->hits}</em></div>
+			<div class="div4"><strong><a target="_blank" href="__SITE__/index/space/space/user_id/{$val->user->id}">{$val->user->username}</a></strong><em>{$val->create_time}</em></div>
+			</li>
+		{/foreach}
+		</ul>
+	</div>
+	<div class="forumpage">
+	<a href="__SITE__/index/topic/topic" class="backtoforum_btn">返回讨论组</a>
+	
+	<!-- <ul class="postforum_page"><li class="current">{/$page}</li></ul> -->
+	
+	</div>
+	</div>
+</div>
+</div>
+
+</div>

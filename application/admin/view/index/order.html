@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=ie=7 http-equiv=x-ua-compatible>
+<LINK rel=stylesheet type=text/css href="__STATIC__/admin/css/admincp.css">
+<script type="text/javascript" src="__STATIC__/admin/js/jquery-1.11.3.min.js"></script>
+<META name=GENERATOR content="MSHTML 8.00.6001.19120"></HEAD>
+<BODY>
+
+  <div id="append_parent"></div>
+  <div class="container" id="cpcontainer">
+    <script type="text/JavaScript">parent.document.title = '订单';</script>
+    <div class="itemtitle"><h6>所有订单</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="__SITE__/admin/goods/set" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$count} </strong>个订单
+        </th>
+      </tr>
+     
+      <tr class="header">
+        <th>订单号</th>
+        <th>商品名字</th>
+        <!-- <th>订单商品图</th> -->
+        <th>数量</th>
+        <th>下单时间</th>
+        <th>买家姓名</th>
+        <th>订单状态</th>
+      	<th></th>
+      </tr>
+     {foreach $list as $v}
+      <tr class="hover">
+      
+        <td>{$v->id}</td>
+        <td>{$v->goods_name}</td>
+
+        <td>{$v->goods_num}</td>
+        <td>{$v->create_time}</td>
+       	<td>{$v->user->username}</td>
+        <td>
+          <a href="javascript:;" oid="{$v->id}" status="{$v->status}" onclick="set(this)" class="act">{$v->status}</a>
+        </td>
+        <td><a href="javascript:;" onclick="del(this)" gid="{$v->id}">放入回收站</a></td>
+      </tr>
+     {/foreach}
+     
+      </table>
+    </form>
+   {$page}
+    <script type="text/javascript">
+        function set(aobj)
+        {
+          var id = aobj.getAttribute('oid');
+          var status = aobj.getAttribute('status');
+          var oo = '';
+          $.ajax({
+             type: "POST",
+             url: "__SITE__/admin/order/set",
+             data: {oid:id, status:status},
+             success: function(data,type){
+              eval('('+data+')');
+                obj = eval('('+data+')');
+                //console.log(obj);
+               if(obj.status){
+                  window.location.href = '__SITE__/admin/index/order';
+                  
+                  //aobj.remove();
+               }else{
+                alert(obj.msg);
+               }
+             }
+          });
+        }
+
+        function move(tt)
+        {
+          var gid = tt.getAttribute('gid');
+          var oo = '';
+          //console.log(tt.parent());
+         $.ajax({
+              method: 'post',
+              url: "__SITE__/admin/order/move",
+             
+              data: {
+                id:gid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                
+                 if(oo.status){   
+                  window.location.href = '__SITE__/admin/index/order';
+                 }else{
+                  alert(oo.msg);
+                 }
+                  
+              }
+           });  
+        }
+        function del(aobj)
+        {
+          var id = aobj.getAttribute('gid');
+            var oo='';
+            $.ajax({
+             type: "POST",
+             url: "__SITE__/admin/order/del",
+             data: {gid:id},
+             success: function(data,type){
+              eval('('+data+')');
+                obj = eval('('+data+')');
+               if(obj.status){
+                  window.location.href = '__SITE__/admin/index/order';
+               }else{
+                alert(obj.msg);
+               }
+             }
+          });
+        }
+    </script>
+  </div>
+  <br>
+  <hr>
+  <br>
+  
+ <!--  回收站 -->
+ <div class="container" id="cpcontainer">
+  <div class="itemtitle"><h6>订单回收站</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$delCount} </strong>个订单
+        </th>
+      </tr>
+     
+      <tr class="header">
+      
+        <th>订单号</th>
+        <th>商品名字</th>
+        <th>数量</th>
+        <th>下单时间</th>
+        <th>买家姓名</th>
+        <th>订单状态</th>
+        <th></th>
+      </tr>
+     {foreach $deleteOrder as $v}
+      <tr class="hover">
+        <td>{$v->id}</td>
+        <td>{$v->goods_name}</td>
+        <td>{$v->goods_num}</td>
+        <td>{$v->create_time}</td>
+        <td>{$v->user->username}</td>
+        <td>
+        {$v->status}
+        </td>
+        <td><a href="javascript:;" onclick="move(this)" gid="{$v->id}">移出回收站</a></td>
+      </tr>
+     {/foreach}
+     
+      </table>
+    </form>
+    {$twopage}
+  </div>
+  <!-- <div style="height:100px;width:100%"></div> -->
+</BODY>
+</HTML>

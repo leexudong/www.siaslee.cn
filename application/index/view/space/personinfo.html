@@ -1,0 +1,457 @@
+
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top" style="left: 1206px;">	<a href="javascript:;" class="backtotop pngFix">回到顶部</a>
+</div>
+<div class="main_w clearfix">
+	<div class="main clearfix">
+		<h1 class="bbtitles">修改个人资料</h1>
+		<div class="user_main clearfix">
+			<div class="user_inner_tab">
+				
+				<ul class="user_inner_tab_ul">
+					<li><a href="__SITE__/index/space/personInfo" class="current link">编辑个人资料</a></li>
+					<li><a href="__SITE__/index/space/setHead" class="link">修改头像</a></li>
+					<li><a href="__SITE__/index/space/setPsw" class="link">修改密码</a></li>
+									</ul>
+			</div>
+			
+
+			<div class="sixin_list">
+				<div class="sixin_list_w">
+					<div class="useredit_w">
+						<form  method="post" action ="__SITE__/index/space/setInfo" >
+							<input type="hidden" value="modi" name="action">
+							<ul class="useredit_ul clearfix">
+								<li>
+									<dl class="clearfix"><dt>输入新邮箱：</dt>
+										<dd class="dd1">
+											<span>
+												<input type="text" class="text" id="email" name="email" value="{$userInfo->email}" autocomplete="off"><div></div>
+												<input type="button" value="发送激活邮件" style="width:120px;margin-top:10px;" class="submit" id="btn">
+											</span>
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+
+
+<script>
+
+        $("#btn").click(function() {
+		        $.ajax({
+		            type: 'post',
+		            url: '__SITE__/index/space/email',
+		            dataType: 'json',
+		            async: false,
+		            data: {
+		                email: $("#email").val(),
+		              
+		            },
+		            success: function(data) {
+		            	 
+		                $("#email").next().html('<font color="red">'+data.msg+'</font>');
+		               // window. location.href="http://www.goodeat.com";
+		            }
+		        });
+		        return false;
+		});
+</script>
+								<li>
+									<dl class="clearfix">
+										<dt>电话号：</dt>
+										<dd class="dd1">
+											<input type="text" class="text" name="phone" id = "username" value="{$userInfo->phone}" autocomplete="off"><div></div>
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt>昵称：</dt>
+										<dd class="dd1">
+											<input type="text" class="text" name="username" id = "username" value="{$userInfo->username}" autocomplete="off"><div></div>
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+								
+								
+
+								<li>
+									<dl class="clearfix">
+										<dt>性别：</dt>
+										<dd class="dd1">
+											<select name="sex" id="sex">
+												<option value="">其他</option>
+												<option value="2">女</option>
+												<option value="1" selected="selected">男</option>
+											</select>
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt>生日：</dt>
+										<dd class="dd1">
+											<select name="year">
+												<option value="">请选择</option>
+												<option value="2016">2016年</option>
+												<option value="2015">2015年</option>
+												<option value="2014">2014年</option>
+												<option value="2013">2013年</option>
+												<option value="2012">2012年</option>
+												<option value="2011">2011年</option>
+												<option value="2010">2010年</option>
+												<option value="2009">2009年</option>
+												<option value="2008">2008年</option>
+												<option value="2007">2007年</option>
+												<option value="2006">2006年</option>
+												<option value="2005">2005年</option>
+												<option value="2004">2004年</option>
+												<option value="2003">2003年</option>
+												<option value="2002">2002年</option>
+												<option value="2001">2001年</option>
+												<option value="2000">2000年</option>
+												<option value="1999">1999年</option>
+												<option value="1998">1998年</option>
+												<option value="1997">1997年</option>
+												<option value="1996">1996年</option>
+												<option value="1995">1995年</option>
+												<option value="1994">1994年</option>
+												<option value="1993">1993年</option>
+												<option value="1992" selected="selected">1992年</option>
+												<option value="1991">1991年</option>
+												<option value="1990">1990年</option>
+												<option value="1989">1989年</option>
+												<option value="1988">1988年</option>
+												<option value="1987">1987年</option>
+												<option value="1986">1986年</option>
+												<option value="1985">1985年</option>
+												<option value="1984">1984年</option>
+												<option value="1983">1983年</option>
+												<option value="1982">1982年</option>
+												<option value="1981">1981年</option>
+												<option value="1980">1980年</option>
+												<option value="1979">1979年</option>
+												<option value="1978">1978年</option>
+												<option value="1977">1977年</option>
+												<option value="1976">1976年</option>
+												<option value="1975">1975年</option>
+												<option value="1974">1974年</option>
+												<option value="1973">1973年</option>
+												<option value="1972">1972年</option>
+												<option value="1971">1971年</option>
+												<option value="1970">1970年</option>
+												<option value="1969">1969年</option>
+												<option value="1968">1968年</option>
+												<option value="1967">1967年</option>
+												<option value="1966">1966年</option>
+												<option value="1965">1965年</option>
+												<option value="1964">1964年</option>
+												<option value="1963">1963年</option>
+												<option value="1962">1962年</option>
+												<option value="1961">1961年</option>
+												<option value="1960">1960年</option>
+												<option value="1959">1959年</option>
+												<option value="1958">1958年</option>
+												<option value="1957">1957年</option>
+												<option value="1956">1956年</option>
+												<option value="1955">1955年</option>
+												<option value="1954">1954年</option>
+												<option value="1953">1953年</option>
+												<option value="1952">1952年</option>
+												<option value="1951">1951年</option>
+												<option value="1950">1950年</option>
+												<option value="1949">1949年</option>
+												<option value="1948">1948年</option>
+												<option value="1947">1947年</option>
+												<option value="1946">1946年</option>
+												<option value="1945">1945年</option>
+												<option value="1944">1944年</option>
+												<option value="1943">1943年</option>
+												<option value="1942">1942年</option>
+												<option value="1941">1941年</option>
+												<option value="1940">1940年</option>
+												<option value="1939">1939年</option>
+												<option value="1938">1938年</option>
+												<option value="1937">1937年</option>
+												<option value="1936">1936年</option>
+												<option value="1935">1935年</option>
+												<option value="1934">1934年</option>
+												<option value="1933">1933年</option>
+												<option value="1932">1932年</option>
+												<option value="1931">1931年</option>
+												<option value="1930">1930年</option>
+												<option value="1929">1929年</option>
+												<option value="1928">1928年</option>
+												<option value="1927">1927年</option>
+												<option value="1926">1926年</option>
+												<option value="1925">1925年</option>
+												<option value="1924">1924年</option>
+												<option value="1923">1923年</option>
+												<option value="1922">1922年</option>
+												<option value="1921">1921年</option>
+												<option value="1920">1920年</option>
+											</select>
+											<select name="month">
+												<option value="">请选择</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3" selected="selected">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+											<select name="day">
+												<option value="">请选择</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5" selected="selected">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+												<option value="13">13</option>
+												<option value="14">14</option>
+												<option value="15">15</option>
+												<option value="16">16</option>
+												<option value="17">17</option>
+												<option value="18">18</option>
+												<option value="19">19</option>
+												<option value="20">20</option>
+												<option value="21">21</option>
+												<option value="22">22</option>
+												<option value="23">23</option>
+												<option value="24">24</option>
+												<option value="25">25</option>
+												<option value="26">26</option>
+												<option value="27">27</option>
+												<option value="28">28</option>
+												<option value="29">29</option>
+												<option value="30">30</option>
+												<option value="31">31</option>
+											</select>
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt>家乡：</dt>
+										<dd class="dd1">
+										<input type="text" value="{$userInfo->home}" name = "home" id="home" style="width:330px;height:37px;"><div></div>
+											
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt>所在地：</dt>
+										<dd class="dd1">
+											<input type="text" name = "address" id="address"style="width:330px;height:37px;" value="{$userInfo->address}"><div></div>
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt>职业：</dt>
+										<dd class="dd1">
+											<select name="job" id="job">
+												<option value="0" class="selcted">请选择</option>
+												<option value="学生" selected="selected">学生</option>
+												<option value="政府职员">政府职员</option>
+												<option value="教师">教师</option>
+												<option value="医生">医生</option>
+												<option value="营养师">营养师</option>
+												<option value="摄影师">摄影师</option>
+												<option value="职业厨师">职业厨师</option>
+												<option value="律师">律师</option>
+												<option value="会计">会计</option>
+												<option value="翻译">翻译</option>
+												<option value="编辑">编辑</option>
+												<option value="音乐人">音乐人</option>
+												<option value="演艺人">演艺人</option>
+												<option value="广告人">广告人</option>
+												<option value="公司文员">公司文员</option>
+												<option value="IT/互联网">IT/互联网</option>
+												<option value="个体商人">个体商人</option>
+												<option value="全职主妇">全职主妇</option>
+												<option value="其他">其他</option>
+											</select>
+										</dd>
+									</dl>
+								</li>
+								<li>
+									<dl class="clearfix">
+										<dt>签名：</dt>
+										<dd class="dd1" id="editsignname">
+											<textarea class="textarea1" name="signature" id="signature">{$userInfo->signature}</textarea>
+										</dd>
+										
+										<dd class="dd2">
+											<span class="tip" style="color: rgb(153, 153, 153);">还能输入150字</span>
+										</dd>
+									</dl>
+								</li>
+								
+								<li>
+									<dl class="clearfix">
+										<dt>验证码：</dt>
+										<dd class="dd1">
+											<input type="text" class="text" style="width:50px;margin-right:10px;margin-top:-30px;"class="text" id="code"  name="code"		splaceholder="请输入验证码" > 
+											<img id="verify_img" src="{:captcha_src()}" alt="验证码"
+											style="margin-right:5px;width:100px; height:40px; " onclick="refreshVerify()"><div></div>
+
+											<a href="javascript:refreshVerify()" style="margin-left:150px;">点击刷新</a>
+
+										</dd>
+											<dd class="dd2">
+										</dd>
+									</dl>
+								</li>
+								
+								<li>
+									<dl class="clearfix">
+										
+										<dd class="dd1">
+											<input type="submit" style="margin-left:100px;" value="提交" id="sub" class="submit">
+										</dd>
+										<dd class="dd2"></dd>
+									</dl>
+								</li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function refreshVerify() {
+    		var ts = Date.parse(new Date())/1000;
+    		$('#verify_img').attr("src", "/captcha?id="+ts);
+    	}
+
+	
+    //所有的客户端验证都是不可信任的
+     $(function() {
+
+   //  	function checkUsername() {
+
+			
+   //          if ($("#username").val()=='') {
+			// //alert(11);
+   //              $("#username").next().html('<font color="red">此项不能为空</font>');
+   //              return false;
+   //          } else {
+   //              $("#username").next().html('<font color="green">填写正确</font>');
+   //              return true;
+   //          }
+   //      }
+   //      function checkHome() {
+           
+			
+   //          if ($("#home").val()=='') {
+			// //alert(11);
+   //              $("#home").next().html('<font color="red">此项不能为空</font>');
+   //              return false;
+   //          } else {
+   //              $("#home").next().html('<font color="green">填写正确</font>');
+   //              return true;
+   //          }
+   //      }
+   //      function checkAddress() {
+           
+			
+   //          if ($("#address").val()=='') {
+			// //alert(11);
+   //              $("#address").next().html('<font color="red">此项不能为空</font>');
+   //              return false;
+   //          } else {
+   //              $("#address").next().html('<font color="green">填写正确</font>');
+   //              return true;
+   //          }
+   //      }
+     
+        
+        function checkEmail(){
+        	var reg=/^[\w-]+(\.[\w]+)*@([\w-]+\.)+[a-zA-z]{2,7}$/;
+        	// var reg = /\w+[@]{1}\w+[.]\w+/;
+        	if($("#email").val()==""){
+        			 $("#email").next().html('<font color="red">邮箱不能为空</font>');
+        			 return false;
+        	}else if(reg.test($("#email").val())){
+        		
+        		 $("#email").next().html('<font color="green">邮箱格式正确</font>');
+        		 return true;
+        	}else{
+        		 $("#email").next().html('<font color="red">邮箱格式不正确</font>');
+        		 return true;
+        	}
+
+        }
+       
+		 // $("#username").blur(function() {
+   //          checkUsername();
+   //       });
+   //       $("#home").blur(function() {
+
+   //          checkHome();
+   //       });
+   //        $("#address").blur(function() {
+
+   //          checkAddress();
+   //       });
+          
+  //         $("#email").blur(function() {
+  //           checkEmail();
+  //        });
+
+  //          $("#sub").click(function() {
+		//         $.ajax({
+		//             type: 'post',
+		//             url: 'http://www.goodeat.com/index/space/setInfo',
+		//             dataType: 'json',
+		//             async: false,
+		//             data: {
+		//                 email: $("#email").val(),
+		//                 username: $("#username").val(),
+		//                 sex : $("#sex").val(),
+		//                  year : $("year").val(),
+		//                   month : $("#month").val(),
+		//                day:$("#day").val(),
+		//                 home:$("#home").val(),
+		//                  address:$("#address").val(),
+		//                  job:$("#jov").val(),
+		//                  signature:$("#signature").val(),
+		//                 code:$("#code").val(),
+		              
+		//             },
+		//             success: function(data) {
+		            	 
+		//                 $("#verify_img").next().html('<font color="red">'+data.msg+'</font>');
+		//                 window. location.href="http://www.goodeat.com/index/space/personInfo";
+		//             }
+		//         });
+		//         return false;
+		// });
+
+     
+        
+    });
+    </script> 

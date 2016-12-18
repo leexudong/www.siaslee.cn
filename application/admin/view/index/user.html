@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=ie=7 http-equiv=x-ua-compatible>
+<style>
+    .pagination{list-style: none;}
+    .pagination li{display: inline-block;padding: 2px 8px}
+</style>
+<link rel="stylesheet" href="__STATIC__/admin/css/pintuer.css">
+<LINK rel=stylesheet type=text/css href="__STATIC__/admin/css/admincp.css">
+<script src="__STATIC__/admin/js/ajax.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/jquery-1.11.3.min.js"></script>
+<META name=GENERATOR content="MSHTML 8.00.6001.19120"></HEAD>
+<BODY>
+  <div id="append_parent"></div>
+  <div class="container" id="cpcontainer">
+    <script type="text/JavaScript">parent.document.title = '标题';</script>
+    <h6>用户表</h6>
+    <form name="cpform" method="post" autocomplete="off" action="__SITE__/admin/user/set" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$count} </strong>条可用用户记录
+        </th>
+      </tr>
+      <tr class="header">
+        <th></th>
+        <th>用户名</th>
+        <th>用户头像</th>
+        <th>积分</th>
+        <th>注册时间</th>
+       <th>用户类型</th> 
+        <!-- <th>粉丝数</th>
+        <th>关注数</th> -->
+        <th></th>
+      </tr>
+     {foreach $list as $v}
+        <tr class="hover" class="t1">
+             <td class="td25"><input type="checkbox" name="uidarray[]" value="{$v->id}" class="checkbox"></td> 
+              <td>{$v->username}</td>
+               <td><img src="{$v->photo}" style="width:50px;height:50px"></td>
+              <td><input type="text" name="userScore[{$v->id}]" style="width:80px" value="{$v->score}"></td>
+              <td>{$v->create_time}</td>
+               <td>{$v->user_type}</td> 
+              <!-- <td><input type="text" name="fansNum[{/$v->id}]" style="width:50px" value="{/$v->fans_num}"></td>
+              <td><input type="text" name="focusNum[{/$v->id}]" style="width:50px" value="{/$v->focus_num}"></td> -->
+              <td>
+                {if $v->user_type == '管理员'}
+                  <!--普通a链接跳转的方式 <a href="__SITE__/admin/user/setuser/id/{//$v->id}/type/{//$v->user_type}" id="setUser" class="act" style="text-decoration:none" ">设为普通用户</a>
+                   -->
+                  <a href="javascript:;" usertype="{$v->user_type}" uid="{$v->id}" id="sets" onclick="setUser(this)" class="act" style="text-decoration:none" >设为普通用户</a>
+                {else}
+
+                  <a href="javascript:;" usertype="普通用户" uid="{$v->id}" id="sets" onclick="setUser(this)" class="act" style="text-decoration:none" >设为管理员</a>
+
+                {/if}
+              </td>
+             <!--  <td><a href="__SITE__/admin/user/delTrue/id/{$v->id}" style="text-decoration:none">删除</a></td> -->
+             <td class="t2"><a href="javascript:;" style="text-decoration:none" uid="{$v->id}" onclick="delTrue(this)">删除</a>
+             </td>
+              <td>
+                <a href="javascript:;" uid="{$v->id}" onclick="del(this)" class="act" style="text-decoration:none">放入回收站</a>
+              </td>
+        </tr>
+       {/foreach}
+       </tr>
+      <tr>
+        <td colspan="15">
+          <div class="fixsel">
+            <input type="submit" class="btn" id="submit_submit" name="submit" title="按 Enter 键可删除" value="提交" />
+          </div>
+        </td>
+      </tr>
+      </table>
+    </form> 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$page}
+   <script type="text/javascript">
+     function setUser(data)
+     {  
+          var usertype = data.getAttribute('usertype');
+          var uid = data.getAttribute('uid');
+          
+          var u = data;
+        //console.log(u.innerHTML);
+          var oo = '';
+         ajax({
+
+              method: 'post',
+              url: "__SITE__/admin/user/setuser",
+              async: true, //异步
+              data: {
+                type:usertype,
+                id:uid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                 
+                 if(oo.status){
+                    
+                    window.location.href = '__SITE__/admin/index/user';
+                 }else{
+                   alert(oo.msg);
+                 }
+                  
+              }
+           });  
+
+     }
+
+     function del(data)
+     {
+         var uid = data.getAttribute('uid');
+          var oo = '';
+          
+         ajax({
+              method: 'post',
+              url: "__SITE__/admin/user/del",
+              async: true, //异步
+              data: {
+                id:uid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                
+                 if(oo.status){
+                    //t.remove();
+                    window.location.href = '__SITE__/admin/index/user';
+                 }else{
+                  alert(oo.msg);
+                 }
+                  
+              }
+           });  
+     }
+
+     //真删除
+     function delTrue(tt)
+     {
+        var uid = tt.getAttribute('uid');
+          var oo = '';
+          //console.log(tt.parent());
+         ajax({
+              method: 'post',
+              url: "__SITE__/admin/user/delTrue",
+              async:true, //异步
+              data: {
+                id:uid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                
+                 if(oo.status){   
+                  window.location.href = '__SITE__/admin/index/user';
+                 }else{
+                  alert(oo.msg);
+                 }
+                  
+              }
+           });  
+     }
+
+     //移除回收站
+     function move(tt)
+     {
+        var uid = tt.getAttribute('uid');
+          var oo = '';
+          //console.log(tt.parent());
+         ajax({
+              method: 'post',
+              url: "__SITE__/admin/user/move",
+              async:true, //异步
+              data: {
+                id:uid
+              },
+              success: function(data){
+                 
+                 oo = eval('('+data+')');
+                
+                 if(oo.status){   
+                  window.location.href = '__SITE__/admin/index/user';
+                 }else{
+                  alert(oo.msg);
+                 }
+                  
+              }
+           });  
+     }
+
+  </script>
+
+    <hr>
+    <!-- 删除的用户 -->
+    <div class="itemtitle"><h6>放入回收站的用户</h6></div>
+    <form name="cpform" method="post" autocomplete="off" action="" id="cpform" >
+    <table class="tb tb2 ">
+      <tr>
+        <th colspan="15" class="partition">
+        共有<strong> {$deleteCount}  </strong>个被放入回收站的用户
+        </th>
+      </tr>
+      <tr class="header">
+        <td></td>
+        <td>用户名字</td>
+        <td>用户头像</td>
+        <td>注册时间</td>
+        <td>用户类型</td>
+        <!-- <td>粉丝数</td>
+        <td>关注数</td> -->
+        
+        <td></td>
+      </tr>
+      {foreach $deleteUser as $v}
+      <tr class="hover">
+        <th></th>
+        <th>{$v->username}</th>
+        <th><img src="{$v->photo}" style="width:50px;height:50px"></th>
+        <th>{$v->create_time}</th>
+        <th>{$v->user_type}</th>
+        <th><a href="javascript:;" uid="{$v->id}" onclick="move(this)">移出回收站</a></th>
+       <!--  <th>{/$v->fans_num}</th>
+       <th>{/$v->focus_num}</th> -->
+        <!-- <th><a href="__SITE__/admin/user/delTrue/id/{$v->id}" style="text-decoration:none">彻底删除</a></th> -->
+      </tr>
+      {/foreach}
+      
+      </table>
+    </form>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$twopage}
+  </div>
+  <div style="height:100px;width:100%"></div>
+</BODY>
+</HTML>
