@@ -26,7 +26,7 @@ class Site extends Controller
 				'linkman_name'=>$s_name,
 				'phone'=>$s_phone,
 				'qq'=>$s_qq,
-				'email'=>$s_address,
+				'email'=>$s_email,
 				'address'=>$s_address,
 				'site_information'=>$scopyright
 
